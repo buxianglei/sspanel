@@ -26,7 +26,7 @@
         mounted() {
             axios.get("/isLogin").then(function(rsp){
                 if (rsp.data.status_code == 200) {
-                    location.href='/#/'
+                    location.href='/#/dashboard'
                 }
             });
         },
@@ -39,7 +39,7 @@
                 }).then(function(rsp){
                     if (rsp.data.status_code == 200) {
                         alert("登录成功");
-                        location.href='/'
+                        location.href='/#/dashboard'
                     } else {
                         alert("密码错误")
                     }

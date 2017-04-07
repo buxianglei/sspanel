@@ -11301,7 +11301,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         axios.get("/isLogin").then(function (rsp) {
             if (rsp.data.status_code == 200) {
-                location.href = '/#/';
+                location.href = '/#/dashboard';
             }
         });
     },
@@ -11315,7 +11315,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function (rsp) {
                 if (rsp.data.status_code == 200) {
                     alert("登录成功");
-                    location.href = '/';
+                    location.href = '/#/dashboard';
                 } else {
                     alert("密码错误");
                 }
@@ -43922,6 +43922,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
@@ -43930,7 +43945,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("home page")])
+  return _c('div', {
+    attrs: {
+      "id": "home"
+    }
+  }, [_c('header', {
+    attrs: {
+      "id": "header"
+    }
+  }, [_c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "intro-text"
+  }, [_c('h1', [_vm._v("SS panel")]), _vm._v(" "), _c('p', [_vm._v("Life is short. The world is big.")]), _vm._v(" "), _c('router-link', {
+    staticClass: "btn btn-custom btn-lg page-scroll",
+    attrs: {
+      "to": "login"
+    }
+  }, [_vm._v("Get Start")])], 1)])])]), _vm._v(" "), _c('div', {
+    staticClass: "about"
+  })])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

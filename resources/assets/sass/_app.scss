@@ -84,3 +84,55 @@ p
 {
     color: #fff;
 }
+
+#home
+{
+    height: 100%;
+}
+
+#home header
+{
+    height: 50%;
+    background: url(https://cdn.ishadowsocks.pro/img/intro-bg.jpg) no-repeat fixed top;
+}
+
+header .intro-text {
+    line-height: 8vh;
+    text-align: center;
+    color: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width:100%;
+    height: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    font-size: 20px;
+}
+
+.panel-body
+{
+    height: 100%;
+    padding: 0px;
+}
+
+.btn-custom
+{
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #72a411;
+    border: 0;
+    padding: 14px 20px;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-radius: 0;
+    margin-top: 20px;
+    transition: all 0.5s;
+}
+
+.about
+{
+    height: 40%;
+    background: #fff;
+}
