@@ -1,0 +1,86 @@
+.app
+{
+    background: rgba(0, 0, 0, 0.3) url(https://drscdn.500px.org/photo/206577481/q%3D80_m%3D2000/a7091485bd1361926b463e57085452c6) no-repeat fixed top;
+    padding: 0px;
+    overflow: hidden;
+}
+
+#app, body, html, .app
+{
+    height: 100%;
+}
+
+.appbar
+{
+    border: 1px solid rgba(89, 105, 119, 1);
+}
+
+.appbar a
+{
+    color: #fff;
+    
+}
+
+.panel, .navbar
+{
+    border-radius: 0px;
+    margin: 0px;
+    background: rgba(0, 0, 0, 0.5)
+}
+
+label
+{
+    color: #fff;
+}
+
+.nav > li > a:hover
+{
+    color: #777;
+    background-color: rgba(0, 0, 0, 0)
+}
+
+.nav > li > a:focus
+{
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0)
+}
+
+.nav > li > a:active
+{
+    background-color: rgba(0, 0, 0, 1)
+}
+
+.panel-footer
+{
+    position:absolute;
+    bottom:0;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    padding: 0px;
+    background-color: #fff;
+    border-radius: 0px;
+    background: rgba(0, 0, 0, 0.5)
+}
+
+.panel-footer p
+{
+    margin: 0px;
+    text-align: center;
+}
+
+.content
+{
+    height: 100%;
+}
+
+.navbar-toggle
+{
+    padding: 0px;
+    color: #fff;
+}
+
+p
+{
+    color: #fff;
+}

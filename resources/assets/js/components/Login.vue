@@ -1,5 +1,5 @@
 <template>
-    <div id="login">
+    <div id="login" class="col-md-4 col-md-offset-4">
         <div class="form-group">
             <label for="email">邮箱</label>
             <input type="email" class="form-control" id="email" v-model:value="email" placeholder="请输入邮箱地址">

@@ -5,6 +5,7 @@ Vue.use(VueRouter)
 const App = require('./components/App.vue')
 const Login = require('./components/Login.vue')
 const Dashboard = require('./components/Dashboard.vue')
+const Home = require('./components/Home.vue')
 const Logout = require('./components/Logout.vue')
 
 const routes = [
@@ -14,6 +15,10 @@ const routes = [
         children: [
             {
                 path: '/',
+                component: Home
+            },
+            {
+                path: 'dashboard',
                 component: Dashboard
             },
             {

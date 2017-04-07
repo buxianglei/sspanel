@@ -1,14 +1,11 @@
 <template>
     <div class="app">
-        <nav class="navbar navbar-default">
+        <nav class="navbar appbar">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
                 <a class="navbar-brand" href="#">SS panel</a>
                 </div>
@@ -24,7 +21,7 @@
             </div><!-- /.container-fluid -->
         </nav>
 
-        <div class="panel panel-default col-md-4 col-md-offset-4">
+        <div class="panel content">
             <div class="panel-body">
                 <router-view></router-view>
             </div>
@@ -48,10 +45,12 @@
                             title: "注册"
                         }
                     )
-
-                    location.href='/#/login'
                 } else {
                     that.navbar_li.push(
+                        {
+                            href: 'dashboard',
+                            title: '控制台'
+                        },
                         {
                             href: "logout",
                             title: "退出"

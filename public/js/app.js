@@ -11234,9 +11234,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -11250,10 +11247,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     href: "register",
                     title: "注册"
                 });
-
-                location.href = '/#/login';
             } else {
                 that.navbar_li.push({
+                    href: 'dashboard',
+                    title: '控制台'
+                }, {
                     href: "logout",
                     title: "退出"
                 });
@@ -11393,6 +11391,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 var App = __webpack_require__(38);
 var Login = __webpack_require__(39);
 var Dashboard = __webpack_require__(53);
+var Home = __webpack_require__(59);
 var Logout = __webpack_require__(57);
 
 var routes = [{
@@ -11400,6 +11399,9 @@ var routes = [{
     component: App,
     children: [{
         path: '/',
+        component: Home
+    }, {
+        path: 'dashboard',
         component: Dashboard
     }, {
         path: 'login',
@@ -41230,7 +41232,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "app"
   }, [_c('nav', {
-    staticClass: "navbar navbar-default"
+    staticClass: "navbar appbar"
   }, [_c('div', {
     staticClass: "container-fluid"
   }, [_vm._m(0), _vm._v(" "), _c('div', {
@@ -41247,7 +41249,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_vm._v(_vm._s(li.title))])], 1)
   }))])])]), _vm._v(" "), _c('div', {
-    staticClass: "panel panel-default col-md-4 col-md-offset-4"
+    staticClass: "panel content"
   }, [_c('div', {
     staticClass: "panel-body"
   }, [_c('router-view')], 1)])])
@@ -41262,14 +41264,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "data-target": "#bs-example-navbar-collapse-1",
       "aria-expanded": "false"
     }
-  }, [_c('span', {
-    staticClass: "sr-only"
-  }, [_vm._v("Toggle navigation")]), _vm._v(" "), _c('span', {
-    staticClass: "icon-bar"
-  }), _vm._v(" "), _c('span', {
-    staticClass: "icon-bar"
-  }), _vm._v(" "), _c('span', {
-    staticClass: "icon-bar"
+  }, [_c('i', {
+    staticClass: "fa fa-bars",
+    attrs: {
+      "aria-hidden": "true"
+    }
   })]), _vm._v(" "), _c('a', {
     staticClass: "navbar-brand",
     attrs: {
@@ -41291,6 +41290,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    staticClass: "col-md-4 col-md-offset-4",
     attrs: {
       "id": "login"
     }
@@ -43818,7 +43818,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -43869,13 +43868,75 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("dashboard")])
+  return _c("div")
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-bb7c0786", module.exports)
+  }
+}
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(8)(
+  /* script */
+  __webpack_require__(60),
+  /* template */
+  __webpack_require__(61),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/losgif/sspanel.dev/resources/assets/js/components/Home.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Home.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-9d52985c", Component.options)
+  } else {
+    hotAPI.reload("data-v-9d52985c", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("home page")])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-9d52985c", module.exports)
   }
 }
 
