@@ -64,7 +64,6 @@ label
 
 .content
 {
-    min-height: 86vh;
     border: none;
     margin: 0px;
 }
@@ -101,9 +100,9 @@ p
     justify-content: center;
 }
 
-#home header .container
+#home header .container, #login, .content, #register
 {
-    height: 86vh;
+    min-height: 86vh;
 }
 
 .footer
@@ -112,7 +111,6 @@ p
     background: #fff;
     padding: 15px;
     color: #444;
-    border-top: 1px solid #eee;
     margin-left: 0;
     -webkit-transition: -webkit-transform .3s cubic-bezier(.32, 1.25, .375, 1.15);
     -moz-transition: -moz-transform .3s cubic-bezier(.32, 1.25, .375, 1.15);
