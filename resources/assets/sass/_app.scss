@@ -1,8 +1,6 @@
 .app
 {
-    background: rgba(0, 0, 0, 0.3) url(https://drscdn.500px.org/photo/206577481/q%3D80_m%3D2000/a7091485bd1361926b463e57085452c6) no-repeat fixed top;
     padding: 0px;
-    overflow: hidden;
 }
 
 #app, body, html, .app
@@ -12,20 +10,15 @@
 
 .appbar
 {
-    border: 1px solid rgba(89, 105, 119, 1);
+    margin: 0px;
+    border-bottom: 1px solid rgba(89, 105, 119, 1);
+    border-radius: 0px;
+    background: #062f46;
 }
 
 .appbar a
-{
-    color: #fff;
-    
-}
-
-.panel, .navbar
-{
-    border-radius: 0px;
-    margin: 0px;
-    background: rgba(0, 0, 0, 0.5)
+{ 
+    color: #fff;    
 }
 
 label
@@ -71,7 +64,9 @@ label
 
 .content
 {
-    height: 100%;
+    min-height: 85vh;
+    border: none;
+    margin: 0px;
 }
 
 .navbar-toggle
@@ -92,27 +87,55 @@ p
 
 #home header
 {
-    height: 50%;
-    background: url(https://cdn.ishadowsocks.pro/img/intro-bg.jpg) no-repeat fixed top;
+    height: 100%;
+    background: url(https://drscdn.500px.org/photo/91259483/q%3D80_m%3D1500/13d50d6e936ad8d124e1136b0e1d155e) no-repeat top;
+}
+
+#home header .container, .footer .container
+{
+    height: 100%;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer
+{
+    text-align: center;
+    background: #fff;
+    padding: 15px;
+    color: #444;
+    border-top: 1px solid #eee;
+    margin-left: 0;
+    -webkit-transition: -webkit-transform .3s cubic-bezier(.32, 1.25, .375, 1.15);
+    -moz-transition: -moz-transform .3s cubic-bezier(.32, 1.25, .375, 1.15);
+    -o-transition: -o-transform .3s cubic-bezier(.32, 1.25, .375, 1.15);
+    transition: transform .3s cubic-bezier(.32, 1.25, .375, 1.15);
+    -webkit-transition: margin-left .3s cubic-bezier(.32, 1.25, .375, 1.15);
+    -o-transition: margin-left .3s cubic-bezier(.32, 1.25, .375, 1.15);
+    transition: margin-left .3s cubic-bezier(.32, 1.25, .375, 1.15);
+    z-index: 820;
+}
+
+.footer p
+{
+    color: #000;
 }
 
 header .intro-text {
-    line-height: 8vh;
     text-align: center;
     color: #fff;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width:100%;
-    height: 50%;
-    -webkit-transform: translateX(-50%) translateY(-50%);
     font-size: 20px;
+    min-height: 85vh;
 }
 
 .panel-body
 {
     height: 100%;
     padding: 0px;
+    background: rgba(0, 0, 0, 0.3) url(https://drscdn.500px.org/photo/206577481/q%3D80_m%3D2000/a7091485bd1361926b463e57085452c6) no-repeat top;
 }
 
 .btn-custom
@@ -131,8 +154,68 @@ header .intro-text {
     transition: all 0.5s;
 }
 
-.about
+#login, #dashboard, #register
 {
-    height: 40%;
-    background: #fff;
+    margin: 15px;
+}
+
+.box
+{
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #3c8dbc;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.box-header {
+    color: #444;
+    display: block;
+    padding: 10px;
+    position: relative;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.box-body {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 10px;
+}
+
+.box-body p
+{
+    color: #676a6c;
+}
+
+.box-header .box-title {
+    display: inline-block;
+    font-size: 18px;
+    margin: 0;
+    line-height: 1;
+}
+
+.box-header > .fa, .box-header > .glyphicon, .box-header > .ion {
+    margin-right: 5px;
+}
+
+.box-header > .fa, .box-header > .glyphicon, .box-header > .ion, .box-header .box-title {
+    display: inline-block;
+    font-size: 18px;
+    margin: 0;
+    line-height: 1;
+}
+
+span a
+{
+    color: #fff;
+    text-transform: uppercase;
+}
+
+img
+{
+    margin: 0px auto;
 }

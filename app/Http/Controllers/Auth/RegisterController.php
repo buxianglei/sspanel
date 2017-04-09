@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -49,7 +51,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:user',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -62,10 +64,35 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $port = User::orderBy("id", 'desc')->first()->port;
+        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'passwd' => str_random(4),
+            't' => time(),
+            'u' => 0,
+            'd' => 0,
+            'transfer_enable' => env("TRANSFER_ENABLE"),
+            'port' => $port ? $port+1 : env("PORT_START")
         ]);
+    }
+
+    /**
+     * 用户注册方法
+     *
+     * @param Request $request
+     * @return json
+     */  
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        return $this->responseSuccess("注册成功");
     }
 }

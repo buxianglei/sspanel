@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlansTable extends Migration
+class CreateRechargeListsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreatePlansTable extends Migration
      */
     public function up()
     {
-        Schema::create('plans', function (Blueprint $table) {
+        Schema::create('recharge_lists', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger("node_id");
-            $table->string("name");
-            $table->integer("price");
-            $table->bigInteger("vaild_time");
+            $table->bigInteger("user_id");
+            $table->bigInteger("user_account_id");
+            $table->integer("amount");
+            $table->tinyInteger("status");
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +31,6 @@ class CreatePlansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plans');
+        Schema::dropIfExists('recharge_lists');
     }
 }

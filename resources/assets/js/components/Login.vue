@@ -38,10 +38,13 @@
                     password: this.password
                 }).then(function(rsp){
                     if (rsp.data.status_code == 200) {
-                        alert("登录成功");
-                        location.href='/#/dashboard'
+                        toastr.success("登录成功");
+                        location.href='/'
                     } else {
-                        alert("密码错误")
+                        for (var value in rsp.data) {
+                            var msg = rsp.data[value][0];
+                            toastr.error(msg);
+                        }
                     }
                 })
             }

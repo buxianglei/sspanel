@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -44,7 +45,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        $rsp = parent::render($request, $exception);
+
+        if ($exception instanceof ValidationException) {
+            return $rsp->setStatusCode(200);
+        } else {
+            return $rsp;
+        }
     }
 
     /**

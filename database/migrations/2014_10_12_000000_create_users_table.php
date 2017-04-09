@@ -16,7 +16,6 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->bigInteger('phone')->unique();
             $table->string('email')->unique();
             $table->string('passwd', 16);
             $table->string('password' ,255);
@@ -28,8 +27,6 @@ class CreateUsersTable extends Migration
             $table->tinyInteger("switch")->default(1);
             $table->tinyInteger("enable")->default(1);
             $table->tinyInteger("type")->default(1);
-            $table->integer("last_get_gift_time")->default(0);
-            $table->integer("last_rest_pass_time")->default(0);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

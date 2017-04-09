@@ -19,10 +19,15 @@ class OrderController extends Controller
                         $q->with('node');
                     }
                 ]);
-            }
+            },
+            'userAccount'
         ])->first();
+
+        $user->remaining_transfer = number_format(($user->transfer_enable-($user->u+$user->d))/1024/1024/1024, 2, '.', '');
+        $user->transfer           = number_format($user->transfer_enable/1024/1024/1024, 2, '.', '');
+        $user->used_transfer      = number_format(($user->u+$user->d)/1024/1024/1024, 2, '.', '');
         
-        if ($user->order) {
+        if (isset($user->order[0])) {
             $user->url = 'ss://'.base64_encode($user->order[0]->plan->node->crypt_type.':'.$user->passwd.'@'.$user->order[0]->plan->node->host.':'.$user->port);
             return $this->responseSuccess($user);
         } else {

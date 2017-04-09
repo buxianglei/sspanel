@@ -7,6 +7,7 @@ const Login = require('./components/Login.vue')
 const Dashboard = require('./components/Dashboard.vue')
 const Home = require('./components/Home.vue')
 const Logout = require('./components/Logout.vue')
+const Register = require('./components/Register.vue')
 
 const routes = [
     {
@@ -24,6 +25,10 @@ const routes = [
             {
                 path: 'login',
                 component: Login
+            },
+            {
+                path: 'register',
+                component: Register
             },
             {
                 path: 'logout',

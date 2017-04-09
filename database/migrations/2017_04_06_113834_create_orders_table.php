@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->bigInteger("user_id");
             $table->bigInteger("plan_id");
+            $table->timestamp('expire_time');
             $table->timestamps();
             $table->softDeletes();
         });
