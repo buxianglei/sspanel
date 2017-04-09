@@ -114,7 +114,7 @@
             showQrcode: function () {
                 this.modal_title = '二维码图片'
                 this.modal_body = '\
-                                <img class="img-responsive img-rounded" src="https://api.qrserver.com/v1/create-qr-code/?data='+this.url+'" >\
+                                <img class="img-responsive img-rounded" src="https://api.qrserver.com/v1/create-qr-code/?data='+ this.url + '" >\
                                  '
             }
         },

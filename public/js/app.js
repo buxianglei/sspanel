@@ -21502,10 +21502,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
+        $(".router-link-active").click(function () {
+            $("button.navbar-toggle").click();
+        });
+
         var that = this;
         axios.get("/isLogin").then(function (rsp) {
             if (rsp.data.status_code == 500) {
@@ -21691,6 +21694,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -42106,19 +42130,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "app"
   }, [_c('nav', {
-    staticClass: "navbar appbar"
+    staticClass: "navbar appbar navbar-fixed-top"
   }, [_c('div', {
     staticClass: "container-fluid"
   }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "collapse navbar-collapse",
-    attrs: {
-      "id": "bs-example-navbar-collapse-1"
-    }
+    staticClass: "collapse navbar-collapse"
   }, [_c('ul', {
     staticClass: "nav navbar-nav navbar-right"
   }, _vm._l((_vm.navbar_li), function(li, index) {
     return _c('li', [_c('router-link', {
       attrs: {
+        "onclick": "$('button.navbar-toggle').click()",
         "to": li.href
       }
     }, [_vm._v(_vm._s(li.title))])], 1)
@@ -42135,7 +42157,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "type": "button",
       "data-toggle": "collapse",
-      "data-target": "#bs-example-navbar-collapse-1",
+      "data-target": ".navbar-collapse",
       "aria-expanded": "false"
     }
   }, [_c('i', {
@@ -42593,8 +42615,38 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "to": "login"
     }
-  }, [_vm._v("Get Start")])], 1)])])])
-},staticRenderFns: []}
+  }, [_vm._v("Get Start")])], 1)])]), _vm._v(" "), _vm._m(0)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "about"
+    }
+  }, [_c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-xs-12 col-md-6 "
+  }, [_c('div', {
+    staticClass: "about-img"
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "http://xyz.ishadow.online/img/about.jpg",
+      "alt": ""
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-xs-12 col-md-6"
+  }, [_c('div', {
+    staticClass: "about-text"
+  }, [_c('h2', [_vm._v("How to use it")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', [_vm._v("This software supported on most common devices like Windows/iPhone/iPad/Android/Macbook. There are only two steps to get it working. First, download and install it. Second, open it and scan QR image. Servers will be configured automatically. Then surfing any websites you like.")]), _vm._v(" "), _c('a', {
+    staticClass: "btn btn-custom btn-lg",
+    attrs: {
+      "href": "#",
+      "target": "_blank"
+    }
+  }, [_vm._v("Tutorials")])])])])])])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
