@@ -1,40 +1,36 @@
 <template>
     <div class="app">
-        <nav class="navbar appbar navbar-fixed-top">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
-                        <i class="fa fa-bars"
-                           aria-hidden="true"></i>
-                    </button>
-                    <a class="navbar-brand" href="#">SS panel</a>
-                </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li v-for="(li, index) in navbar_li">
-                            <router-link onclick="$('button.navbar-toggle').click()" :to="li.href">{{li.title}}</router-link>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container-fluid -->
+        <nav id="menu" class="menu">
+            <section class="menu-section">
+                <h3 class="menu-section-title">Routers</h3>
+                <ul class="menu-section-list">
+                    <li v-for="item in navbar_li">
+                        <router-link :to="item.href" onclick="$('.btn-bar').click()"><i class="fa" v-bind:class="item.icon"></i> {{item.title}}</router-link>
+                    </li>
+                </ul>
+            </section>
         </nav>
 
-        <div class="panel content">
-            <div class="panel-body">
-                <router-view></router-view>
+        <main id="panel">
+            <div class="btn-bar" v-on:click="openSlideout()">
+                <i class="fa fa-bars"></i> SS panel
+                <img src="https://www.gravatar.com/avatar/" alt="" class="header-img pull-right img-circle">
+                <strong class="pull-right" v-if="name">{{name}} </strong>
             </div>
-        </div>
 
-        <footer id="footer">
-            <div class="footer">
-                <strong>Copyright © 2014-2017 sspanel.org</strong> All rights reserved.
+            <div class="panel content">
+                <div class="panel-body">
+                    <router-view></router-view>
+                </div>
             </div>
-        </footer>
+
+            <footer id="footer">
+                <div class="footer">
+                    <strong>Copyright © 2014-2017 sspanel.org</strong> All rights reserved.
+                </div>
+            </footer>
+        </main>
     </div>
     </div>
 </template>
@@ -42,8 +38,12 @@
 <script>
     export default {
         mounted() {
-            $(".router-link-active").click(function () {
-                $("button.navbar-toggle").click()
+
+            this.slideout = new Slideout({
+                'panel': document.getElementById('panel'),
+                'menu': document.getElementById('menu'),
+                'padding': 256,
+                'tolerance': 70
             });
 
             var that = this;
@@ -52,26 +52,45 @@
                     that.navbar_li.push(
                         {
                             href: "login",
-                            title: "登录"
+                            title: "登录",
+                            icon: {
+                                'fa-send': true
+                            }
                         },
                         {
                             href: "register",
-                            title: "注册"
+                            title: "注册",
+                            icon: {
+                                'fa-sign-in': true
+                            }
                         }
                     )
                 } else {
+                    that.name = rsp.data.data.name
                     that.navbar_li.push(
                         {
                             href: 'dashboard',
-                            title: '控制台'
+                            title: '控制台',
+                            icon: {
+                                'fa-cube': true
+                            }
                         },
                         {
                             href: "logout",
-                            title: "退出"
+                            title: "退出",
+                            icon: {
+                                'fa-sign-out': true
+                            }
                         }
                     )
                 }
             });
+        },
+
+        methods: {
+            openSlideout: function () {
+                this.slideout.toggle()
+            }
         },
 
         data() {
@@ -79,9 +98,14 @@
                 navbar_li: [
                     {
                         href: '/',
-                        title: '主页'
+                        title: '主页',
+                        icon: {
+                            'fa-home': true
+                        }
                     }
-                ]
+                ],
+                slideout: '',
+                name: ''
             }
         }
     }

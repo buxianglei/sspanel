@@ -21500,15 +21500,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
-        $(".router-link-active").click(function () {
-            $("button.navbar-toggle").click();
+
+        this.slideout = new Slideout({
+            'panel': document.getElementById('panel'),
+            'menu': document.getElementById('menu'),
+            'padding': 256,
+            'tolerance': 70
         });
 
         var that = this;
@@ -21516,28 +21516,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (rsp.data.status_code == 500) {
                 that.navbar_li.push({
                     href: "login",
-                    title: "登录"
+                    title: "登录",
+                    icon: {
+                        'fa-send': true
+                    }
                 }, {
                     href: "register",
-                    title: "注册"
+                    title: "注册",
+                    icon: {
+                        'fa-sign-in': true
+                    }
                 });
             } else {
+                that.name = rsp.data.data.name;
                 that.navbar_li.push({
                     href: 'dashboard',
-                    title: '控制台'
+                    title: '控制台',
+                    icon: {
+                        'fa-cube': true
+                    }
                 }, {
                     href: "logout",
-                    title: "退出"
+                    title: "退出",
+                    icon: {
+                        'fa-sign-out': true
+                    }
                 });
             }
         });
     },
+
+
+    methods: {
+        openSlideout: function openSlideout() {
+            this.slideout.toggle();
+        }
+    },
+
     data: function data() {
         return {
             navbar_li: [{
                 href: '/',
-                title: '主页'
-            }]
+                title: '主页',
+                icon: {
+                    'fa-home': true
+                }
+            }],
+            slideout: '',
+            name: ''
         };
     }
 });
@@ -22050,6 +22076,12 @@ window.axios.defaults.headers.common = {
  */
 
 window.toastr = __webpack_require__(42);
+
+/**
+ * Slideout component is a component to slide menus
+ */
+
+window.Slideout = __webpack_require__(228);
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -42237,55 +42269,60 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "app"
   }, [_c('nav', {
-    staticClass: "navbar appbar navbar-fixed-top"
-  }, [_c('div', {
-    staticClass: "container-fluid"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "collapse navbar-collapse"
-  }, [_c('ul', {
-    staticClass: "nav navbar-nav navbar-right"
-  }, _vm._l((_vm.navbar_li), function(li, index) {
+    staticClass: "menu",
+    attrs: {
+      "id": "menu"
+    }
+  }, [_c('section', {
+    staticClass: "menu-section"
+  }, [_c('h3', {
+    staticClass: "menu-section-title"
+  }, [_vm._v("Routers")]), _vm._v(" "), _c('ul', {
+    staticClass: "menu-section-list"
+  }, _vm._l((_vm.navbar_li), function(item) {
     return _c('li', [_c('router-link', {
       attrs: {
-        "onclick": "$('button.navbar-toggle').click()",
-        "to": li.href
+        "to": item.href,
+        "onclick": "$('.btn-bar').click()"
       }
-    }, [_vm._v(_vm._s(li.title))])], 1)
-  }))])])]), _vm._v(" "), _c('div', {
+    }, [_c('i', {
+      staticClass: "fa",
+      class: item.icon
+    }), _vm._v(" " + _vm._s(item.title))])], 1)
+  }))])]), _vm._v(" "), _c('main', {
+    attrs: {
+      "id": "panel"
+    }
+  }, [_c('div', {
+    staticClass: "btn-bar",
+    on: {
+      "click": function($event) {
+        _vm.openSlideout()
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-bars"
+  }), _vm._v(" SS panel\n            "), _c('img', {
+    staticClass: "header-img pull-right img-circle",
+    attrs: {
+      "src": "https://www.gravatar.com/avatar/",
+      "alt": ""
+    }
+  }), _vm._v(" "), (_vm.name) ? _c('strong', {
+    staticClass: "pull-right"
+  }, [_vm._v(_vm._s(_vm.name) + " ")]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "panel content"
   }, [_c('div', {
     staticClass: "panel-body"
-  }, [_c('router-view')], 1)]), _vm._v(" "), _vm._m(1)])
+  }, [_c('router-view')], 1)]), _vm._v(" "), _vm._m(0)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "navbar-header"
-  }, [_c('button', {
-    staticClass: "navbar-toggle collapsed",
-    attrs: {
-      "type": "button",
-      "data-toggle": "collapse",
-      "data-target": ".navbar-collapse",
-      "aria-expanded": "false"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-bars",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "navbar-brand",
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("SS panel")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('footer', {
     attrs: {
       "id": "footer"
     }
   }, [_c('div', {
     staticClass: "footer"
-  }, [_c('strong', [_vm._v("Copyright © 2014-2017 sspanel.org")]), _vm._v(" All rights reserved.\n        ")])])
+  }, [_c('strong', [_vm._v("Copyright © 2014-2017 sspanel.org")]), _vm._v(" All rights reserved.\n            ")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -45415,6 +45452,732 @@ module.exports = function(module) {
 
 __webpack_require__(12);
 module.exports = __webpack_require__(13);
+
+
+/***/ }),
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */,
+/* 123 */,
+/* 124 */,
+/* 125 */,
+/* 126 */,
+/* 127 */,
+/* 128 */,
+/* 129 */,
+/* 130 */,
+/* 131 */,
+/* 132 */,
+/* 133 */,
+/* 134 */,
+/* 135 */,
+/* 136 */,
+/* 137 */,
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
+/* 153 */,
+/* 154 */,
+/* 155 */,
+/* 156 */,
+/* 157 */,
+/* 158 */,
+/* 159 */,
+/* 160 */,
+/* 161 */,
+/* 162 */,
+/* 163 */,
+/* 164 */,
+/* 165 */,
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var requestAnimFrame = (function() {
+  return window.requestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    function (callback) {
+      window.setTimeout(callback, 1000 / 60);
+    };
+}());
+
+function decouple(node, event, fn) {
+  var eve,
+      tracking = false;
+
+  function captureEvent(e) {
+    eve = e;
+    track();
+  }
+
+  function track() {
+    if (!tracking) {
+      requestAnimFrame(update);
+      tracking = true;
+    }
+  }
+
+  function update() {
+    fn.call(node, eve);
+    tracking = false;
+  }
+
+  node.addEventListener(event, captureEvent, false);
+
+  return captureEvent;
+}
+
+/**
+ * Expose decouple
+ */
+module.exports = decouple;
+
+
+/***/ }),
+/* 227 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+exports.__esModule = true;
+/**
+ * Creates a new instance of Emitter.
+ * @class
+ * @returns {Object} Returns a new instance of Emitter.
+ * @example
+ * // Creates a new instance of Emitter.
+ * var Emitter = require('emitter');
+ *
+ * var emitter = new Emitter();
+ */
+
+var Emitter = (function () {
+  function Emitter() {
+    _classCallCheck(this, Emitter);
+  }
+
+  /**
+   * Adds a listener to the collection for the specified event.
+   * @memberof! Emitter.prototype
+   * @function
+   * @param {String} event - The event name.
+   * @param {Function} listener - A listener function to add.
+   * @returns {Object} Returns an instance of Emitter.
+   * @example
+   * // Add an event listener to "foo" event.
+   * emitter.on('foo', listener);
+   */
+
+  Emitter.prototype.on = function on(event, listener) {
+    // Use the current collection or create it.
+    this._eventCollection = this._eventCollection || {};
+
+    // Use the current collection of an event or create it.
+    this._eventCollection[event] = this._eventCollection[event] || [];
+
+    // Appends the listener into the collection of the given event
+    this._eventCollection[event].push(listener);
+
+    return this;
+  };
+
+  /**
+   * Adds a listener to the collection for the specified event that will be called only once.
+   * @memberof! Emitter.prototype
+   * @function
+   * @param {String} event - The event name.
+   * @param {Function} listener - A listener function to add.
+   * @returns {Object} Returns an instance of Emitter.
+   * @example
+   * // Will add an event handler to "foo" event once.
+   * emitter.once('foo', listener);
+   */
+
+  Emitter.prototype.once = function once(event, listener) {
+    var self = this;
+
+    function fn() {
+      self.off(event, fn);
+      listener.apply(this, arguments);
+    }
+
+    fn.listener = listener;
+
+    this.on(event, fn);
+
+    return this;
+  };
+
+  /**
+   * Removes a listener from the collection for the specified event.
+   * @memberof! Emitter.prototype
+   * @function
+   * @param {String} event - The event name.
+   * @param {Function} listener - A listener function to remove.
+   * @returns {Object} Returns an instance of Emitter.
+   * @example
+   * // Remove a given listener.
+   * emitter.off('foo', listener);
+   */
+
+  Emitter.prototype.off = function off(event, listener) {
+
+    var listeners = undefined;
+
+    // Defines listeners value.
+    if (!this._eventCollection || !(listeners = this._eventCollection[event])) {
+      return this;
+    }
+
+    listeners.forEach(function (fn, i) {
+      if (fn === listener || fn.listener === listener) {
+        // Removes the given listener.
+        listeners.splice(i, 1);
+      }
+    });
+
+    // Removes an empty event collection.
+    if (listeners.length === 0) {
+      delete this._eventCollection[event];
+    }
+
+    return this;
+  };
+
+  /**
+   * Execute each item in the listener collection in order with the specified data.
+   * @memberof! Emitter.prototype
+   * @function
+   * @param {String} event - The name of the event you want to emit.
+   * @param {...Object} data - Data to pass to the listeners.
+   * @returns {Object} Returns an instance of Emitter.
+   * @example
+   * // Emits the "foo" event with 'param1' and 'param2' as arguments.
+   * emitter.emit('foo', 'param1', 'param2');
+   */
+
+  Emitter.prototype.emit = function emit(event) {
+    var _this = this;
+
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    var listeners = undefined;
+
+    // Defines listeners value.
+    if (!this._eventCollection || !(listeners = this._eventCollection[event])) {
+      return this;
+    }
+
+    // Clone listeners
+    listeners = listeners.slice(0);
+
+    listeners.forEach(function (fn) {
+      return fn.apply(_this, args);
+    });
+
+    return this;
+  };
+
+  return Emitter;
+})();
+
+/**
+ * Exports Emitter
+ */
+exports["default"] = Emitter;
+module.exports = exports["default"];
+
+/***/ }),
+/* 228 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Module dependencies
+ */
+var decouple = __webpack_require__(226);
+var Emitter = __webpack_require__(227);
+
+/**
+ * Privates
+ */
+var scrollTimeout;
+var scrolling = false;
+var doc = window.document;
+var html = doc.documentElement;
+var msPointerSupported = window.navigator.msPointerEnabled;
+var touch = {
+  'start': msPointerSupported ? 'MSPointerDown' : 'touchstart',
+  'move': msPointerSupported ? 'MSPointerMove' : 'touchmove',
+  'end': msPointerSupported ? 'MSPointerUp' : 'touchend'
+};
+var prefix = (function prefix() {
+  var regex = /^(Webkit|Khtml|Moz|ms|O)(?=[A-Z])/;
+  var styleDeclaration = doc.getElementsByTagName('script')[0].style;
+  for (var prop in styleDeclaration) {
+    if (regex.test(prop)) {
+      return '-' + prop.match(regex)[0].toLowerCase() + '-';
+    }
+  }
+  // Nothing found so far? Webkit does not enumerate over the CSS properties of the style object.
+  // However (prop in style) returns the correct value, so we'll have to test for
+  // the precence of a specific property
+  if ('WebkitOpacity' in styleDeclaration) { return '-webkit-'; }
+  if ('KhtmlOpacity' in styleDeclaration) { return '-khtml-'; }
+  return '';
+}());
+function extend(destination, from) {
+  for (var prop in from) {
+    if (from[prop]) {
+      destination[prop] = from[prop];
+    }
+  }
+  return destination;
+}
+function inherits(child, uber) {
+  child.prototype = extend(child.prototype || {}, uber.prototype);
+}
+function hasIgnoredElements(el) {
+  while (el.parentNode) {
+    if (el.getAttribute('data-slideout-ignore') !== null) {
+      return el;
+    }
+    el = el.parentNode;
+  }
+  return null;
+}
+
+/**
+ * Slideout constructor
+ */
+function Slideout(options) {
+  options = options || {};
+
+  // Sets default values
+  this._startOffsetX = 0;
+  this._currentOffsetX = 0;
+  this._opening = false;
+  this._moved = false;
+  this._opened = false;
+  this._preventOpen = false;
+  this._touch = options.touch === undefined ? true : options.touch && true;
+  this._side = options.side || 'left';
+
+  // Sets panel
+  this.panel = options.panel;
+  this.menu = options.menu;
+
+  // Sets  classnames
+  if (!this.panel.classList.contains('slideout-panel')) {
+    this.panel.classList.add('slideout-panel');
+  }
+  if (!this.panel.classList.contains('slideout-panel-' + this._side)) {
+    this.panel.classList.add('slideout-panel-' + this._side);
+  }
+  if (!this.menu.classList.contains('slideout-menu')) {
+    this.menu.classList.add('slideout-menu');
+  }
+  if (!this.menu.classList.contains('slideout-menu-' + this._side)) {
+    this.menu.classList.add('slideout-menu-' + this._side);
+  }
+
+  // Sets options
+  this._fx = options.fx || 'ease';
+  this._duration = parseInt(options.duration, 10) || 300;
+  this._tolerance = parseInt(options.tolerance, 10) || 70;
+  this._padding = this._translateTo = parseInt(options.padding, 10) || 256;
+  this._orientation = this._side === 'right' ? -1 : 1;
+  this._translateTo *= this._orientation;
+
+  // Init touch events
+  if (this._touch) {
+    this._initTouchEvents();
+  }
+}
+
+/**
+ * Inherits from Emitter
+ */
+inherits(Slideout, Emitter);
+
+/**
+ * Opens the slideout menu.
+ */
+Slideout.prototype.open = function() {
+  var self = this;
+  this.emit('beforeopen');
+  if (!html.classList.contains('slideout-open')) {
+    html.classList.add('slideout-open');
+  }
+  this._setTransition();
+  this._translateXTo(this._translateTo);
+  this._opened = true;
+  setTimeout(function() {
+    self.panel.style.transition = self.panel.style['-webkit-transition'] = '';
+    self.emit('open');
+  }, this._duration + 50);
+  return this;
+};
+
+/**
+ * Closes slideout menu.
+ */
+Slideout.prototype.close = function() {
+  var self = this;
+  if (!this.isOpen() && !this._opening) {
+    return this;
+  }
+  this.emit('beforeclose');
+  this._setTransition();
+  this._translateXTo(0);
+  this._opened = false;
+  setTimeout(function() {
+    html.classList.remove('slideout-open');
+    self.panel.style.transition = self.panel.style['-webkit-transition'] = self.panel.style[prefix + 'transform'] = self.panel.style.transform = '';
+    self.emit('close');
+  }, this._duration + 50);
+  return this;
+};
+
+/**
+ * Toggles (open/close) slideout menu.
+ */
+Slideout.prototype.toggle = function() {
+  return this.isOpen() ? this.close() : this.open();
+};
+
+/**
+ * Returns true if the slideout is currently open, and false if it is closed.
+ */
+Slideout.prototype.isOpen = function() {
+  return this._opened;
+};
+
+/**
+ * Translates panel and updates currentOffset with a given X point
+ */
+Slideout.prototype._translateXTo = function(translateX) {
+  this._currentOffsetX = translateX;
+  this.panel.style[prefix + 'transform'] = this.panel.style.transform = 'translateX(' + translateX + 'px)';
+  return this;
+};
+
+/**
+ * Set transition properties
+ */
+Slideout.prototype._setTransition = function() {
+  this.panel.style[prefix + 'transition'] = this.panel.style.transition = prefix + 'transform ' + this._duration + 'ms ' + this._fx;
+  return this;
+};
+
+/**
+ * Initializes touch event
+ */
+Slideout.prototype._initTouchEvents = function() {
+  var self = this;
+
+  /**
+   * Decouple scroll event
+   */
+  this._onScrollFn = decouple(doc, 'scroll', function() {
+    if (!self._moved) {
+      clearTimeout(scrollTimeout);
+      scrolling = true;
+      scrollTimeout = setTimeout(function() {
+        scrolling = false;
+      }, 250);
+    }
+  });
+
+  /**
+   * Prevents touchmove event if slideout is moving
+   */
+  this._preventMove = function(eve) {
+    if (self._moved) {
+      eve.preventDefault();
+    }
+  };
+
+  doc.addEventListener(touch.move, this._preventMove);
+
+  /**
+   * Resets values on touchstart
+   */
+  this._resetTouchFn = function(eve) {
+    if (typeof eve.touches === 'undefined') {
+      return;
+    }
+
+    self._moved = false;
+    self._opening = false;
+    self._startOffsetX = eve.touches[0].pageX;
+    self._preventOpen = (!self._touch || (!self.isOpen() && self.menu.clientWidth !== 0));
+  };
+
+  this.panel.addEventListener(touch.start, this._resetTouchFn);
+
+  /**
+   * Resets values on touchcancel
+   */
+  this._onTouchCancelFn = function() {
+    self._moved = false;
+    self._opening = false;
+  };
+
+  this.panel.addEventListener('touchcancel', this._onTouchCancelFn);
+
+  /**
+   * Toggles slideout on touchend
+   */
+  this._onTouchEndFn = function() {
+    if (self._moved) {
+      self.emit('translateend');
+      (self._opening && Math.abs(self._currentOffsetX) > self._tolerance) ? self.open() : self.close();
+    }
+    self._moved = false;
+  };
+
+  this.panel.addEventListener(touch.end, this._onTouchEndFn);
+
+  /**
+   * Translates panel on touchmove
+   */
+  this._onTouchMoveFn = function(eve) {
+    if (
+      scrolling ||
+      self._preventOpen ||
+      typeof eve.touches === 'undefined' ||
+      hasIgnoredElements(eve.target)
+    ) {
+      return;
+    }
+
+    var dif_x = eve.touches[0].clientX - self._startOffsetX;
+    var translateX = self._currentOffsetX = dif_x;
+
+    if (Math.abs(translateX) > self._padding) {
+      return;
+    }
+
+    if (Math.abs(dif_x) > 20) {
+
+      self._opening = true;
+
+      var oriented_dif_x = dif_x * self._orientation;
+
+      if (self._opened && oriented_dif_x > 0 || !self._opened && oriented_dif_x < 0) {
+        return;
+      }
+
+      if (!self._moved) {
+        self.emit('translatestart');
+      }
+
+      if (oriented_dif_x <= 0) {
+        translateX = dif_x + self._padding * self._orientation;
+        self._opening = false;
+      }
+
+      if (!(self._moved && html.classList.contains('slideout-open'))) {
+        html.classList.add('slideout-open');
+      }
+
+      self.panel.style[prefix + 'transform'] = self.panel.style.transform = 'translateX(' + translateX + 'px)';
+      self.emit('translate', translateX);
+      self._moved = true;
+    }
+
+  };
+
+  this.panel.addEventListener(touch.move, this._onTouchMoveFn);
+
+  return this;
+};
+
+/**
+ * Enable opening the slideout via touch events.
+ */
+Slideout.prototype.enableTouch = function() {
+  this._touch = true;
+  return this;
+};
+
+/**
+ * Disable opening the slideout via touch events.
+ */
+Slideout.prototype.disableTouch = function() {
+  this._touch = false;
+  return this;
+};
+
+/**
+ * Destroy an instance of slideout.
+ */
+Slideout.prototype.destroy = function() {
+  // Close before clean
+  this.close();
+
+  // Remove event listeners
+  doc.removeEventListener(touch.move, this._preventMove);
+  this.panel.removeEventListener(touch.start, this._resetTouchFn);
+  this.panel.removeEventListener('touchcancel', this._onTouchCancelFn);
+  this.panel.removeEventListener(touch.end, this._onTouchEndFn);
+  this.panel.removeEventListener(touch.move, this._onTouchMoveFn);
+  doc.removeEventListener('scroll', this._onScrollFn);
+
+  // Remove methods
+  this.open = this.close = function() {};
+
+  // Return the instance so it can be easily dereferenced
+  return this;
+};
+
+/**
+ * Expose Slideout
+ */
+module.exports = Slideout;
 
 
 /***/ })
