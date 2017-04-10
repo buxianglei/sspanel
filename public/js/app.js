@@ -42743,7 +42743,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "img-responsive",
     attrs: {
-      "src": "http://xyz.ishadow.online/img/about.jpg",
+      "src": "/storage/img/about.jpg",
       "alt": ""
     }
   })])]), _vm._v(" "), _c('div', {

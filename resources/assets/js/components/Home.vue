@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-md-6 ">
-                        <div class="about-img"><img src="http://xyz.ishadow.online/img/about.jpg" class="img-responsive" alt=""></div>
+                        <div class="about-img"><img src="/storage/img/about.jpg" class="img-responsive" alt=""></div>
                     </div>
                     <div class="col-xs-12 col-md-6">
                         <div class="about-text">
