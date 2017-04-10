@@ -40,11 +40,13 @@
                     if (rsp.data.status_code == 200) {
                         toastr.success("登录成功");
                         location.href='/'
-                    } else {
-                        for (var value in rsp.data) {
-                            var msg = rsp.data[value][0];
+                    } else if (rsp.data.data.original) {
+                        for (var value in rsp.data.data.original) {
+                            var msg = rsp.data.data.original[value];
                             toastr.error(msg);
                         }
+                    } else {
+                        console.log(rsp)
                     }
                 })
             }

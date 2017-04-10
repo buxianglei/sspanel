@@ -13,7 +13,7 @@
         </nav>
 
         <main id="panel">
-            <div class="btn-bar" v-on:click="openSlideout()">
+            <div class="btn btn-bar" v-on:click="openSlideout()">
                 <i class="fa fa-bars"></i> SS panel
                 <img src="https://www.gravatar.com/avatar/" alt="" class="header-img pull-right img-circle">
                 <strong class="pull-right" v-if="name">{{name}} </strong>

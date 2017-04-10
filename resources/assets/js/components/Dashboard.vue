@@ -9,7 +9,7 @@
                     </h2>
                 </div>
                 <div class="box-body">
-                    <p>账户余额: <b>¥ {{amount}}</b></p>
+                    <p>账户余额: <b>¥ {{amount}}</b> <button v-on:click="showRecharge" data-toggle="modal" data-target=".modal" class="btn btn-xs btn-success">充值</button></p>
                     <p>套餐名称: <b>{{plan}}</b></p>
                     <p>过期时间: <b>{{expire_time}}</b></p>
                 </div>
@@ -62,7 +62,7 @@
             </div>
         </div>
 
-        <div class="modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -122,6 +122,12 @@
                 this.modal_body = '\
                                 <img class="img-responsive img-rounded" src="https://api.qrserver.com/v1/create-qr-code/?data='+ this.url + '" >\
                                  '
+            },
+            showRecharge: function() {
+                this.modal_title = "充值"
+                this.modal_body = '\
+                                  \
+                                  '
             }
         },
 
@@ -134,9 +140,10 @@
                 url: '',
                 amount: 0,
                 plan: '',
-                expire_time: '',
-                used_transfer: 0,
-                transfer: 0,
+                html_no_plan: '',
+                expire_time: '1970-01-01 00:00:00',
+                used_transfer: 1,
+                transfer: 1,
                 remaining_transfer: 0,
                 modal_title: '',
                 modal_body: '',
