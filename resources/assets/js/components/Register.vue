@@ -71,7 +71,7 @@
                     } else {
                         for (var value in rsp.data) {
                             var msg = rsp.data[value][0];
-                            // toastr.error(msg);
+                            toastr.error(msg);
                         }
                     }
                 })

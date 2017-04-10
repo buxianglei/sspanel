@@ -21699,6 +21699,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.modal_body = '\
                             <img class="img-responsive img-rounded" src="https://api.qrserver.com/v1/create-qr-code/?data=' + this.url + '" >\
                              ';
+        },
+        showRecharge: function showRecharge() {
+            this.modal_title = "充值";
+            this.modal_body = '\
+                              \
+                              ';
         }
     },
 
@@ -21711,9 +21717,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             url: '',
             amount: 0,
             plan: '',
-            expire_time: '',
-            used_transfer: 0,
-            transfer: 0,
+            html_no_plan: '',
+            expire_time: '1970-01-01 00:00:00',
+            used_transfer: 1,
+            transfer: 1,
             remaining_transfer: 0,
             modal_title: '',
             modal_body: '',
@@ -21914,11 +21921,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (rsp.data.status_code == 200) {
                     toastr.success("登录成功");
                     location.href = '/';
-                } else {
-                    for (var value in rsp.data) {
-                        var msg = rsp.data[value][0];
+                } else if (rsp.data.data.original) {
+                    for (var value in rsp.data.data.original) {
+                        var msg = rsp.data.data.original[value];
                         toastr.error(msg);
                     }
+                } else {
+                    console.log(rsp);
                 }
             });
         }
@@ -22025,7 +22034,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 } else {
                     for (var value in rsp.data) {
                         var msg = rsp.data[value][0];
-                        // toastr.error(msg);
+                        toastr.error(msg);
                     }
                 }
             });
@@ -42294,7 +42303,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "id": "panel"
     }
   }, [_c('div', {
-    staticClass: "btn-bar",
+    staticClass: "btn btn-bar",
     on: {
       "click": function($event) {
         _vm.openSlideout()
@@ -42349,7 +42358,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "box"
   }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "box-body"
-  }, [_c('p', [_vm._v("账户余额: "), _c('b', [_vm._v("¥ " + _vm._s(_vm.amount))])]), _vm._v(" "), _c('p', [_vm._v("套餐名称: "), _c('b', [_vm._v(_vm._s(_vm.plan))])]), _vm._v(" "), _c('p', [_vm._v("过期时间: "), _c('b', [_vm._v(_vm._s(_vm.expire_time))])])])])]), _vm._v(" "), _c('div', {
+  }, [_c('p', [_vm._v("账户余额: "), _c('b', [_vm._v("¥ " + _vm._s(_vm.amount))]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-xs btn-success",
+    attrs: {
+      "data-toggle": "modal",
+      "data-target": ".modal"
+    },
+    on: {
+      "click": _vm.showRecharge
+    }
+  }, [_vm._v("充值")])]), _vm._v(" "), _c('p', [_vm._v("套餐名称: "), _c('b', [_vm._v(_vm._s(_vm.plan))])]), _vm._v(" "), _c('p', [_vm._v("过期时间: "), _c('b', [_vm._v(_vm._s(_vm.expire_time))])])])])]), _vm._v(" "), _c('div', {
     attrs: {
       "id": "transfer"
     }
@@ -42425,8 +42443,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "modal",
     attrs: {
       "tabindex": "-1",
-      "role": "dialog",
-      "aria-labelledby": "mySmallModalLabel"
+      "role": "dialog"
     }
   }, [_c('div', {
     staticClass: "modal-dialog modal-sm",
