@@ -21502,6 +21502,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -21628,6 +21630,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
+        axios.get("/isLogin").then(function (rsp) {
+            if (rsp.data.status_code == 500) {
+                location.href = '/#/login';
+            }
+        });
+
         var that = this;
         axios.get("/api/v1/user/order").then(function (rsp) {
             if (rsp.data.status_code == 200) {
@@ -21694,6 +21702,105 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -42173,8 +42280,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("SS panel")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('footer', {
+    attrs: {
+      "id": "footer"
+    }
+  }, [_c('div', {
     staticClass: "footer"
-  }, [_c('strong', [_vm._v("Copyright © 2014-2017 myunlu.com")]), _vm._v(" All rights reserved.\n    ")])
+  }, [_c('strong', [_vm._v("Copyright © 2014-2017 sspanel.org")]), _vm._v(" All rights reserved.\n        ")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -42615,7 +42726,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "to": "login"
     }
-  }, [_vm._v("Get Start")])], 1)])]), _vm._v(" "), _vm._m(0)])
+  }, [_vm._v("开始使用")])], 1)])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     attrs: {
@@ -42639,13 +42750,209 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-xs-12 col-md-6"
   }, [_c('div', {
     staticClass: "about-text"
-  }, [_c('h2', [_vm._v("How to use it")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', [_vm._v("This software supported on most common devices like Windows/iPhone/iPad/Android/Macbook. There are only two steps to get it working. First, download and install it. Second, open it and scan QR image. Servers will be configured automatically. Then surfing any websites you like.")]), _vm._v(" "), _c('a', {
+  }, [_c('h2', [_vm._v("如何使用")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', [_vm._v("支持所有主流的平台下使用，包括windows/iphone/ipad/android/macbook。仅需2个步骤，第一下载软件，第二打开软件扫码自动配置，即可开启全新的网络体验。")]), _vm._v(" "), _c('a', {
     staticClass: "btn btn-custom btn-lg",
     attrs: {
       "href": "#",
       "target": "_blank"
     }
-  }, [_vm._v("Tutorials")])])])])])])
+  }, [_vm._v("使用教程")])])])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "restaurant-menu"
+    }
+  }, [_c('div', {
+    staticClass: "section-title text-center center"
+  }, [_c('div', {
+    staticClass: "overlay"
+  }, [_c('h2', [_vm._v("软件下载")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', [_vm._v("请在下方根据自身的设备类型，选择合适的软件下载")])])]), _vm._v(" "), _c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-xs-12 col-sm-6"
+  }, [_c('div', {
+    staticClass: "menu-section"
+  }, [_c('h2', {
+    staticClass: "menu-section-title"
+  }, [_c('i', {
+    staticClass: "fa fa-windows"
+  }), _vm._v(" Windows")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "menu-item"
+  }, [_c('div', {
+    staticClass: "menu-item-name"
+  }, [_vm._v(" SS for Windows ")]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item-price"
+  }, [_c('a', {
+    staticClass: "btn btn-custom btn-lg",
+    attrs: {
+      "href": "http://160.16.231.71/ss-3.4.3.zip",
+      "target": "_blank"
+    }
+  }, [_vm._v("SS 3.4.3")])]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item-description"
+  }, [_vm._v(" 支持Windows全系列，部分windows(winxp)需要安装"), _c('a', {
+    attrs: {
+      "href": "https://www.microsoft.com/en-us/download/details.aspx?id=53344",
+      "target": "_blank"
+    }
+  }, [_vm._v(".NET")]), _vm._v("框架. ")])]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item"
+  }, [_c('div', {
+    staticClass: "menu-item-name"
+  }, [_vm._v(" SSR for Windows ")]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item-price"
+  }, [_c('a', {
+    staticClass: "btn btn-custom btn-lg",
+    attrs: {
+      "href": "http://160.16.231.71/ssr-4.1.4-win.7z",
+      "target": "_blank"
+    }
+  }, [_vm._v("SSR 4.1.4")])]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item-description"
+  }, [_vm._v(" 支持Windows全系列，部分windows(winxp)需要安装"), _c('a', {
+    attrs: {
+      "href": "https://www.microsoft.com/en-us/download/details.aspx?id=53344",
+      "target": "_blank"
+    }
+  }, [_vm._v(".NET")]), _vm._v("框架. ")])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-xs-12 col-sm-6"
+  }, [_c('div', {
+    staticClass: "menu-section"
+  }, [_c('h2', {
+    staticClass: "menu-section-title"
+  }, [_c('i', {
+    staticClass: "fa fa-apple"
+  }), _vm._v(" iPhone/iPad")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "menu-item"
+  }, [_c('div', {
+    staticClass: "menu-item-name"
+  }, [_vm._v(" Shadowrocket(¥18) ")]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item-price"
+  }, [_c('a', {
+    staticClass: "btn btn-custom btn-lg",
+    attrs: {
+      "href": "http://dwz.cn/3BvX4t",
+      "target": "_blank"
+    }
+  }, [_vm._v("AppStore")])]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item-description"
+  }, [_vm._v(" 无需越狱. 需要iOS9.0以上. 支持SS和SSR配置.")])]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item"
+  }, [_c('div', {
+    staticClass: "menu-item-name"
+  }, [_vm._v(" Wingy(免费) ")]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item-price"
+  }, [_c('a', {
+    staticClass: "btn btn-custom btn-lg",
+    attrs: {
+      "href": "http://dwz.cn/5vCPvz",
+      "target": "_blank"
+    }
+  }, [_vm._v("AppStore")])]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item-description"
+  }, [_vm._v(" 无需越狱. 需要iOS9.0以上. 支持SS和SSR配置.")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-xs-12 col-sm-6"
+  }, [_c('div', {
+    staticClass: "menu-section"
+  }, [_c('h2', {
+    staticClass: "menu-section-title"
+  }, [_c('i', {
+    staticClass: "fa fa-android"
+  }), _vm._v(" Android")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "menu-item"
+  }, [_c('div', {
+    staticClass: "menu-item-name"
+  }, [_vm._v(" SS for Andoird ")]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item-price"
+  }, [_c('a', {
+    staticClass: "btn btn-custom btn-lg",
+    attrs: {
+      "href": "http://160.16.231.71/ss-nightly-4.1.3.apk",
+      "target": "_blank"
+    }
+  }, [_vm._v("SS V4.1.3")])]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item-description"
+  }, [_vm._v(" 无需ROOT，仅支持SS，官方版本. 更多版本请点击"), _c('a', {
+    attrs: {
+      "href": "http://dwz.cn/sk7E1",
+      "target": "_blank"
+    }
+  }, [_vm._v("这里")]), _vm._v(".")])]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item"
+  }, [_c('div', {
+    staticClass: "menu-item-name"
+  }, [_vm._v(" SSR for Android ")]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item-price"
+  }, [_c('a', {
+    staticClass: "btn btn-custom btn-lg",
+    attrs: {
+      "href": "http://160.16.231.71/ssr-3.3.5.apk",
+      "target": "_blank"
+    }
+  }, [_vm._v("SSR V3.3.5")])]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item-description"
+  }, [_vm._v(" 无需ROOT. 支持SS和SSR ")])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-xs-12 col-sm-6"
+  }, [_c('div', {
+    staticClass: "menu-section"
+  }, [_c('h2', {
+    staticClass: "menu-section-title"
+  }, [_c('i', {
+    staticClass: "fa fa-laptop"
+  }), _vm._v(" Macbook")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "menu-item"
+  }, [_c('div', {
+    staticClass: "menu-item-name"
+  }, [_vm._v(" SS for OSX ")]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item-price"
+  }, [_c('a', {
+    staticClass: "btn btn-custom btn-lg",
+    attrs: {
+      "href": "http://160.16.231.71/ssx-2.6.3.dmg",
+      "target": "_blank"
+    }
+  }, [_vm._v("SSX V2.6.3")])]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item-description"
+  }, [_vm._v(" 最后更新2015年3月6日，对SS来说，足够了. ")])]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item"
+  }, [_c('div', {
+    staticClass: "menu-item-name"
+  }, [_vm._v(" SSR for OSX ")]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item-price"
+  }, [_c('a', {
+    staticClass: "btn btn-custom btn-lg",
+    attrs: {
+      "href": "http://160.16.231.71/SSX-NG-R8.dmg",
+      "target": "_blank"
+    }
+  }, [_vm._v("SSR-NG-R8")])]), _vm._v(" "), _c('div', {
+    staticClass: "menu-item-description"
+  }, [_vm._v(" 非官方开发. 支持SS和SSR. "), _c('a', {
+    attrs: {
+      "href": "http://dwz.cn/5yrkGs",
+      "target": "_blank"
+    }
+  }, [_vm._v("项目地址")])])])])])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "footer"
+    }
+  }, [_c('div', {
+    staticClass: "container text-center"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('h3', [_vm._v("使用须知")]), _vm._v(" "), _c('div', {
+    staticClass: "contact-item"
+  }, [_c('p', [_vm._v("本站提供SS仅供学习交流和实验用途")]), _vm._v(" "), _c('p', [_vm._v("请遵守国家法律，否则后果自负")]), _vm._v(" "), _c('p', [_vm._v("服务器已禁止Spam、BT下载以及绝大多数非法网站和非法信息")])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('h3', [_vm._v("找回地址")]), _vm._v(" "), _c('div', {
+    staticClass: "contact-item"
+  }, [_c('p', [_vm._v("编辑任意邮件发送至下面的邮箱，将会自动回复最新地址.")]), _vm._v(" "), _c('p', [_vm._v("Email: Losgif@gmail.com")])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

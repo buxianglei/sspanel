@@ -80,6 +80,12 @@
 <script>
     export default {
         mounted() {
+            axios.get("/isLogin").then(function(rsp){
+                if (rsp.data.status_code == 500) {
+                    location.href='/#/login'
+                }
+            });
+
             var that = this;
             axios.get("/api/v1/user/order").then(function (rsp) {
                 if (rsp.data.status_code == 200) {

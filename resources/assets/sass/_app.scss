@@ -106,6 +106,20 @@ p
     min-height: 86vh;
 }
 
+#footer .container
+{
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6) url(https://drscdn.500px.org/photo/206955617/q%3D80_m%3D1000/508df23fca832916b2da0cf8d209c565) no-repeat fixed bottom;
+    background-size:cover;
+    margin: 0;
+    padding: 50px 0;
+}
+
+#footer .container h3
+{
+    color: #fff;
+}
+
 .footer
 {
     text-align: center;
@@ -128,7 +142,8 @@ p
     color: #000;
 }
 
-header .intro-text {
+header .intro-text
+{
     text-align: center;
     color: #fff;
     font-size: 20px;
@@ -173,7 +188,8 @@ header .intro-text {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.box-header {
+.box-header
+{
     color: #444;
     display: block;
     padding: 10px;
@@ -181,7 +197,8 @@ header .intro-text {
     border-bottom: 1px solid #f4f4f4;
 }
 
-.box-body {
+.box-body
+{
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 3px;
@@ -194,18 +211,21 @@ header .intro-text {
     color: #676a6c;
 }
 
-.box-header .box-title {
+.box-header .box-title
+{
     display: inline-block;
     font-size: 18px;
     margin: 0;
     line-height: 1;
 }
 
-.box-header > .fa, .box-header > .glyphicon, .box-header > .ion {
+.box-header > .fa, .box-header > .glyphicon, .box-header > .ion
+{
     margin-right: 5px;
 }
 
-.box-header > .fa, .box-header > .glyphicon, .box-header > .ion, .box-header .box-title {
+.box-header > .fa, .box-header > .glyphicon, .box-header > .ion, .box-header .box-title
+{
     display: inline-block;
     font-size: 18px;
     margin: 0;
@@ -221,4 +241,97 @@ span a
 img
 {
     margin: 0px auto;
+}
+
+#about
+{
+    padding: 50px 0px;
+    background: #fff;
+}
+
+.about-text
+{
+    text-align: center;
+}
+
+#about p
+{
+    color: #000;
+}
+
+#restaurant-menu
+{
+    padding: 0 0 60px 0;
+    background: #fff;
+}
+
+#restaurant-menu .section-title
+{
+    background: #444 url(http://xyz.ishadow.online/img/menu-bg.jpg) center center no-repeat fixed;
+    background-size: cover;
+    margin-bottom: 70px;
+}
+
+.section-title .overlay {
+    padding: 80px 0;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+#restaurant-menu .section-title h2 
+{
+    color: #fff;
+}
+
+#restaurant-menu .menu-section
+{
+    margin: 0 20px 80px;
+}
+
+#restaurant-menu .menu-section-title 
+{
+    font-size: 26px;
+    display: block;
+    font-weight: 500;
+    color: #444;
+    margin: 20px 0;
+    text-align: center;
+}
+
+#restaurant-menu .menu-item
+{
+    margin: 35px 0;
+    font-size: 18px;
+}
+
+#restaurant-menu .menu-item-name
+{
+    font-weight: 600;
+    font-size: 17px;
+    color: #555;
+    border-bottom: 2px dotted rgb(213, 213, 213);
+}
+
+#restaurant-menu .menu-item-price
+{
+    float: right;
+    font-weight: 600;
+    color: #555;
+    margin-top: -26px;
+}
+
+#restaurant-menu .menu-item-description
+{
+    font-style: italic;
+    font-size: 15px;
+}
+
+hr 
+{
+    height: 2px;
+    width: 70px;
+    text-align: center;
+    position: relative;
+    background: #8eb640;
+    margin: 40px auto;
+    border: 0;
 }

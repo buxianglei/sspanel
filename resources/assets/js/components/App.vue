@@ -30,8 +30,10 @@
             </div>
         </div>
 
-        <footer class="footer">
-            <strong>Copyright © 2014-2017 myunlu.com</strong> All rights reserved.
+        <footer id="footer">
+            <div class="footer">
+                <strong>Copyright © 2014-2017 sspanel.org</strong> All rights reserved.
+            </div>
         </footer>
     </div>
     </div>
