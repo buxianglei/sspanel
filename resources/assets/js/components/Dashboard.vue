@@ -81,7 +81,24 @@
                     <p>密码： <span class="label label-default pull-right">{{passwd}}</span></p>
                     <p>加密方式： <span class="label label-default pull-right">{{crypt_type}}</span></p>
                     <p>Url链接: <span class="label label-default pull-right"><a :href="url">链接地址</a></span></p>
+<<<<<<< HEAD
                     <p>二维码: <span class="label label-default pull-right"><a @click="showQrcode" href="javascript:void(0)">点击查看</a></span></p>
+=======
+                    <p>二维码: <span class="label label-default pull-right"><a v-on:click="showQrcode" data-toggle="modal" data-target=".modal">点击查看</a></span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">{{modal_title}}</h4>
+                    </div>
+                    <div class="modal-body" v-html="modal_body"></div>
+                    <div class="modal-footer" v-if="modal_footer" v-html="modal_footer"></div>
+>>>>>>> ddaca47251caa08569acae4035228a50f6ba7c8d
                 </div>
             </div>
         </div>
@@ -139,6 +156,7 @@ export default {
             this.modal_body = '\
                                 <img class="img-responsive img-rounded" src="https://api.qrserver.com/v1/create-qr-code/?data='+ this.url + '" >\
                                  '
+<<<<<<< HEAD
             this.$store.state.showModal = true;
         }
     },
@@ -159,6 +177,35 @@ export default {
             remaining_transfer: 0,
             modal_title: '',
             modal_body: ''
+=======
+            },
+            showRecharge: function() {
+                this.modal_title = "充值"
+                this.modal_body = '\
+                                  \
+                                  '
+            }
+        },
+
+        data() {
+            return {
+                host: null,
+                port: '...',
+                passwd: '...',
+                crypt_type: '...',
+                url: '',
+                amount: 0,
+                plan: '',
+                html_no_plan: '',
+                expire_time: '1970-01-01 00:00:00',
+                used_transfer: 1,
+                transfer: 1,
+                remaining_transfer: 0,
+                modal_title: '',
+                modal_body: '',
+                modal_footer: ''
+            }
+>>>>>>> ddaca47251caa08569acae4035228a50f6ba7c8d
         }
     }
 }
