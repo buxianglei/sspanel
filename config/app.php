@@ -177,6 +177,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //Alipay
+        Losgif\Alipay\AopClientProvider::class
+
     ],
 
     /*

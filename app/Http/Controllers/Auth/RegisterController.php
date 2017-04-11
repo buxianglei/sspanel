@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\UserAccount;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\Controller;
@@ -66,7 +67,7 @@ class RegisterController extends Controller
     {
         $port = User::orderBy("id", 'desc')->first()->port;
         
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
@@ -77,6 +78,13 @@ class RegisterController extends Controller
             'transfer_enable' => env("TRANSFER_ENABLE"),
             'port' => $port ? $port+1 : env("PORT_START")
         ]);
+
+        $userAccount = new UserAccount();
+        $userAccount->amount = 0;
+
+        $user->userAccount()->save($userAccount);
+
+        return $user;
     }
 
     /**

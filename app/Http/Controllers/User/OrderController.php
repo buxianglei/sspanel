@@ -31,7 +31,7 @@ class OrderController extends Controller
             $user->url = 'ss://'.base64_encode($user->order[0]->plan->node->crypt_type.':'.$user->passwd.'@'.$user->order[0]->plan->node->host.':'.$user->port);
             return $this->responseSuccess($user);
         } else {
-            return $this->responseFail("暂无套餐");
+            return $this->responseNotFound($user);
         }
     }
 }

@@ -4,8 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class RechargeList extends Model
+class Recharge extends Model
 {
+    /**
+     * 设置数据库表名
+     *
+     * @var string
+     */
+    protected $table = "recharge_lists";
+
     /**
      * 用户模型关联
      *

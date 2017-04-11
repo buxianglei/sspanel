@@ -111,9 +111,9 @@ p
     justify-content: center;
 }
 
-#home header .container, #login, .content, #register
+#home header .container, #login, #register, #dashboard, #recharge
 {
-    min-height: 86vh;
+    min-height: 87vh;
 }
 
 #footer .container
@@ -182,7 +182,7 @@ header .intro-text
     transition: all 0.5s;
 }
 
-#login, #dashboard, #register
+#login, #dashboard, #register, #recharge
 {
     margin: 15px;
 }
@@ -438,6 +438,71 @@ body {
     margin-left: 5px;
 }
 
-.modal-backdrop.in {
-    display: none;
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .5);
+  display: table;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-container {
+  width: 300px;
+  margin: 0px auto;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+  transition: all .3s ease;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-header h3 {
+  margin-top: 0;
+  color: #42b983;
+}
+.modal-footer {
+  overflow:hidden;
+}
+
+.modal-body {
+  margin-bottom: 20px;
+}
+
+/*
+ * the following styles are auto-applied to elements with
+ * v-transition="modal" when their visiblity is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+
+.modal-enter, .modal-leave {
+  opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.form-group
+{
+    margin: 15px 0;
+}
+
+.form-group label
+{
+    color: #666;
 }

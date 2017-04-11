@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b52c14e250aa32e05b69b2daf66787f",
+    "content-hash": "7c5f97461290f301cf9ffeaba1d24978",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -504,6 +504,42 @@
                 "storage"
             ],
             "time": "2017-03-22T15:43:14+00:00"
+        },
+        {
+            "name": "losgif/alipay",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Losgif/alipay.git",
+                "reference": "109013b4ee6f9f4929fd49bd4145db202acf0690"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/Losgif/alipay/109013b4ee6f9f4929fd49bd4145db202acf0690.zip",
+                "reference": "109013b4ee6f9f4929fd49bd4145db202acf0690",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Losgif\\Alipay\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Losgif",
+                    "email": "losgif@gmail.com"
+                }
+            ],
+            "description": "Alipay Sdk for Laravel 5",
+            "time": "2017-02-23T03:18:05+00:00"
         },
         {
             "name": "monolog/monolog",
