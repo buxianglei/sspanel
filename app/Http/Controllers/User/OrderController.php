@@ -51,6 +51,10 @@ class OrderController extends Controller
      */
     public function generateOrder(Request $request, User $user)
     {
+        $this->validate($request, [
+            'plan_id' => 'required'
+        ]);
+        
         $plan_id = $request->input('plan_id');
 
         $user_id = $request->user()->id;

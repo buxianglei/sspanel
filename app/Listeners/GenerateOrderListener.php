@@ -40,6 +40,10 @@ class GenerateOrderListener implements ShouldQueue
 
         $userAccount = $event->user->userAccount;
 
+        if ($userAccount->amount - $plan_price < 0) {
+            return $false;
+        }
+
         $rsp = $userAccount->decrement('amount', $plan_price);
 
         if (empty($rsp)) {

@@ -22272,6 +22272,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         buyPlan: function buyPlan() {
+            if (this.node_id == 0) {
+                toastr.error("请选择节点");
+                return false;
+            }
+            if (this.plan_id == 0) {
+                toastr.error("请选择套餐");
+                return false;
+            }
+
             var that = this;
             var rsp = axios.post('/api/v1/user/buyPlan', {
                 plan_id: that.plan_id
