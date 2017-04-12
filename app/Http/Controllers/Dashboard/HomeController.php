@@ -29,6 +29,7 @@ class HomeController extends Controller
 
     public function isLogin (Request $request) {
         if ($request->user()) {
+            $request->user()->avatar = 'https://www.gravatar.com/avatar/' . md5( $request->user()->email );
             return $this->responseSuccess($request->user());
         } else {
             return $this->responseFail('未登录');

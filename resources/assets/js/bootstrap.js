@@ -20,6 +20,7 @@ require('bootstrap-sass');
 window.Vue = require('vue');
 
 Vue.component('modal', require('./components/Modal.vue'));
+Vue.component('nav-list', require('./components/NavList.vue'));
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -54,9 +55,14 @@ window.Slideout = require('slideout')
 
 // import Echo from 'laravel-echo'
 
-// window.Pusher = require('pusher-js');
+// window.Pusher = require('pusher-js')
 
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',
-//     key: 'your-pusher-key'
+//     key: '6a93a426a1645db9a0a1'
 // });
+
+// window.Echo.channel('orders')
+//     .listen('OrderShipped', (e) => {
+//         console.log(e.order.name);
+//     });

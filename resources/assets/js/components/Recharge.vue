@@ -31,10 +31,13 @@
 
 <script>
 export default {
+    mounted () {
+        this.$store.state.list = this.$store.state.loginedList  
+    },
     methods: {
         recharge: function () {
             var that = this
-            
+
             if (this.amount == '') {
                 toastr.error('充值金额不可为空')
                 return false;

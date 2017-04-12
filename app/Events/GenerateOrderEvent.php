@@ -9,20 +9,22 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use App\Models\User;
 
-class PaymentCallbackEvent
+class GenerateOrderEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    public $user, $plan_id;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user, $plan_id)
     {
-        //
+        $this->user = $user;
+        $this->plan_id = $plan_id;
     }
 
     /**
@@ -32,6 +34,6 @@ class PaymentCallbackEvent
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new Channel('test');
     }
 }

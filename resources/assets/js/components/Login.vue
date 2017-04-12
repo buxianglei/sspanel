@@ -29,6 +29,8 @@
                     location.href='/#/dashboard'
                 }
             });
+
+            this.$store.state.list = this.$store.state.unloginList
         },
 
         methods: {
@@ -39,7 +41,7 @@
                 }).then(function(rsp){
                     if (rsp.data.status_code == 200) {
                         toastr.success("登录成功");
-                        location.href='/'
+                        location.href='/#/dashboard'
                     } else if (rsp.data.data.original) {
                         for (var value in rsp.data.data.original) {
                             var msg = rsp.data.data.original[value];

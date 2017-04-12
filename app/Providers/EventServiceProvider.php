@@ -13,9 +13,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\PaymentCallbackEvent' => [
-            'App\Listeners\PaymentCallbackListener',
-        ],
+        'App\Events\GenerateOrderEvent' => [
+            'App\Listeners\GenerateOrderListener',
+        ]
     ];
 
     /**

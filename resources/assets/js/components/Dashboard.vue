@@ -97,6 +97,7 @@ export default {
                 location.href = '/#/login'
             }
         });
+        this.$store.state.list = this.$store.state.loginedList
 
         var that = this;
         axios.get("/api/v1/user/order").then(function (rsp) {

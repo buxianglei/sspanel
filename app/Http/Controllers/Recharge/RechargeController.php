@@ -8,6 +8,7 @@ use Losgif\Alipay\AopClient;
 use Losgif\Alipay\Request\AlipayTradePrecreateRequest;
 use App\Models\Recharge;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class RechargeController extends Controller
 {
@@ -31,6 +32,8 @@ class RechargeController extends Controller
         $attribute['user_account_id'] = $user->find($user->id)->userAccount->id;
         $attribute['amount'] = $amount;
         $attribute['status'] = 0;
+        $attribute['created_at'] = Carbon::now();
+        $attribute['updated_at'] = Carbon::now();
 
         $out_trade_no = $recharge->insertGetId($attribute);
 
@@ -124,7 +127,7 @@ class RechargeController extends Controller
 
                 if ($rsp) {
                     $recharge->status = 1;
-                    
+
                     if ($recharge->save()) {
                         return 'success';
                     } else {

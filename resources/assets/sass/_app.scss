@@ -66,7 +66,7 @@ label
 {
     border: none;
     margin: 0px;
-    padding-top: 50px;
+    padding-top: 7vh;
 }
 
 .btn-bar
@@ -81,7 +81,7 @@ label
     background: rgba(0, 0, 0, 0.8);
     color: #fff;
     font-size: 18px;
-    height: 50px;
+    height: 7vh;
     border-radius: 0;
 }
 
@@ -101,9 +101,9 @@ p
     background: url(https://drscdn.500px.org/photo/91259483/q%3D80_m%3D1500/13d50d6e936ad8d124e1136b0e1d155e) no-repeat top;
 }
 
-#home header .container, .footer .container
+#home header .container
 {
-    height: 100%;
+    min-height: 85vh;
     width: 100vw;
     background: rgba(0, 0, 0, 0.6);
     display: flex;
@@ -111,9 +111,9 @@ p
     justify-content: center;
 }
 
-#home header .container, #login, #register, #dashboard, #recharge
+#login, #dashboard, #register, #recharge, #plan, #help
 {
-    min-height: 87vh;
+    padding: 15px;
 }
 
 #footer .container
@@ -135,16 +135,9 @@ p
     text-align: center;
     background: #fff;
     padding: 15px;
+    height: 8vh;
     color: #444;
     margin-left: 0;
-    -webkit-transition: -webkit-transform .3s cubic-bezier(.32, 1.25, .375, 1.15);
-    -moz-transition: -moz-transform .3s cubic-bezier(.32, 1.25, .375, 1.15);
-    -o-transition: -o-transform .3s cubic-bezier(.32, 1.25, .375, 1.15);
-    transition: transform .3s cubic-bezier(.32, 1.25, .375, 1.15);
-    -webkit-transition: margin-left .3s cubic-bezier(.32, 1.25, .375, 1.15);
-    -o-transition: margin-left .3s cubic-bezier(.32, 1.25, .375, 1.15);
-    transition: margin-left .3s cubic-bezier(.32, 1.25, .375, 1.15);
-    z-index: 820;
 }
 
 .footer p
@@ -161,7 +154,7 @@ header .intro-text
 
 .panel-body
 {
-    height: 100%;
+    min-height: 85vh;
     padding: 0px;
     background: rgba(0, 0, 0, 0.3) url(https://drscdn.500px.org/photo/206577481/q%3D80_m%3D2000/a7091485bd1361926b463e57085452c6) no-repeat top;
 }
@@ -180,11 +173,6 @@ header .intro-text
     border-radius: 0;
     margin-top: 20px;
     transition: all 0.5s;
-}
-
-#login, #dashboard, #register, #recharge
-{
-    margin: 15px;
 }
 
 .box
@@ -475,7 +463,7 @@ body {
 }
 
 .modal-body {
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 /*
@@ -505,4 +493,14 @@ body {
 .form-group label
 {
     color: #666;
+}
+
+.fa
+{
+    width: 25px;
+}
+
+.btn:hover
+{
+    color: #fff;
 }

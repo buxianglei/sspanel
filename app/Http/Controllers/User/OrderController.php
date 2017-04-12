@@ -5,16 +5,24 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Events\GenerateOrderEvent;
 
 class OrderController extends Controller
 {
+    /**
+     * 获取订单
+     *
+     * @param Request $request
+     * @param User $user
+     * @return Response
+     */
     public function getOrder(Request $request, User $user)
     {
         $user_id = $request->user()->id;
 
         $user = $user->where("id", $user_id)->with([
             'order' => function ($q){
-                $q->with([
+                $q->orderBy("id", 'desc')->with([
                     'plan' => function($q) {
                         $q->with('node');
                     }
@@ -33,5 +41,24 @@ class OrderController extends Controller
         } else {
             return $this->responseNotFound($user);
         }
+    }
+
+    /**
+     * 生成订单
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function generateOrder(Request $request, User $user)
+    {
+        $plan_id = $request->input('plan_id');
+
+        $user_id = $request->user()->id;
+
+        $user = $user->find($user_id);
+
+        $rsp = event(new GenerateOrderEvent($user, $plan_id));
+
+        return $rsp;
     }
 }

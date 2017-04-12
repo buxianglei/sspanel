@@ -135,7 +135,16 @@
 
 <script>
     export default {
-
+        mounted () {
+            var that = this;
+            axios.get("/isLogin").then(function (rsp) {
+                if (rsp.data.status_code == 500) {
+                    that.$store.state.list = that.$store.state.unloginList
+                } else {
+                    that.$store.state.list = that.$store.state.loginedList
+                }
+            });
+        }
     }
 
 </script>
