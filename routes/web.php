@@ -37,6 +37,12 @@ Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function (){
         Route::post("buyPlan", 'OrderController@generateOrder');
     });
 
+    # 帮助模块
+    Route::group(['prefix' => 'help', 'namespace' => 'Help'], function () {
+        Route::get("/", "ListController@index");
+        Route::get("/{id}", "ListController@show");
+    });
+
     # 充值模块
     Route::group(['prefix' => 'recharge', 'namespace' => 'Recharge'], function(){
         Route::post("/", "RechargeController@generate");
