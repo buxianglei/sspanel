@@ -34,9 +34,10 @@
         },
 
         mounted() {
+            var that = this
             axios.get("/isLogin").then(function(rsp){
                 if (rsp.data.status_code == 200) {
-                    location.href='/#/dashboard'
+                    that.$router.push('dashboard');
                 }
             });
 

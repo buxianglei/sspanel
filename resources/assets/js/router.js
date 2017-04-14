@@ -81,7 +81,8 @@ const routes = [
 ]
 
 const router = new VueRouter({
-    hashbang: true,
+    mode: 'hash',
+    base: 'user',
     routes
 })
 

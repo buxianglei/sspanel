@@ -24,9 +24,10 @@
         },
 
         mounted() {
+            var that = this
             axios.get("/isLogin").then(function(rsp){
                 if (rsp.data.status_code == 200) {
-                    location.href='/#/dashboard'
+                    that.$router.push('dashboard');
                 }
             });
 
@@ -35,13 +36,15 @@
 
         methods: {
             login: function(){
-                var rsp = axios.post("login", {
+                var that = this
+                
+                var rsp = axios.post("/login", {
                     email: this.email,
                     password: this.password
                 }).then(function(rsp){
                     if (rsp.data.status_code == 200) {
                         toastr.success("登录成功");
-                        location.href='/#/dashboard'
+                        that.$router.push('dashboard');
                     } else if (rsp.data.data.original) {
                         for (var value in rsp.data.data.original) {
                             var msg = rsp.data.data.original[value];

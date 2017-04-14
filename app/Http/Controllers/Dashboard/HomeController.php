@@ -27,6 +27,17 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function user ()
+    {
+        return view('user');
+    }
+
+    /**
+     * 检测是否登陆
+     *
+     * @param Request $request
+     * @return User|Boolean
+     */
     public function isLogin (Request $request) {
         if ($request->user()) {
             $request->user()->avatar = 'https://www.gravatar.com/avatar/' . md5( $request->user()->email );

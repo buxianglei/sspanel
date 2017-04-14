@@ -14,8 +14,11 @@
 # 首页
 Route::get('/', 'Dashboard\HomeController@index');
 
+# 用户
+Route::get('user', 'Dashboard\HomeController@user');
+
 # 是否登陆
-Route::get("/isLogin", 'Dashboard\HomeController@isLogin');
+Route::get("isLogin", 'Dashboard\HomeController@isLogin');
 
 # 退出登录
 Route::post("logout", "Auth\LoginController@logout");

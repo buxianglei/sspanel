@@ -92,9 +92,11 @@
 <script>
 export default {
     mounted() {
+        var that = this
+        
         axios.get("/isLogin").then(function (rsp) {
             if (rsp.data.status_code == 500) {
-                location.href = '/#/login'
+                that.$router.push('login');
             }
         });
         this.$store.state.list = this.$store.state.loginedList
