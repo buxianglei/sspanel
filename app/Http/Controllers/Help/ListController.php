@@ -5,9 +5,17 @@ namespace App\Http\Controllers\Help;
 use App\Models\Help;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Transformers\HelpTransformer;
 
 class ListController extends Controller
 {
+    protected $helpTransformer;
+
+    public function __construct(HelpTransformer $helpTransformer)
+    {
+        $this->helpTransformer = $helpTransformer;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,6 +24,8 @@ class ListController extends Controller
     public function index(Help $help)
     {
         $attritube = $help->all();
+
+        $attritube = $this->helpTransformer->transforms($attritube);
 
         return $this->responseSuccess($attritube);
     }

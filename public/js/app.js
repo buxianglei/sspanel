@@ -22482,7 +22482,6 @@ var routes = [{
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     mode: 'hash',
-    base: 'user',
     routes: routes
 });
 
@@ -44146,7 +44145,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "container"
   }, [_c('div', {
     staticClass: "intro-text"
-  }, [_c('h1', [_vm._v("SS panel")]), _vm._v(" "), _c('p', [_vm._v("Life is short. The world is big.")]), _vm._v(" "), _c('router-link', {
+  }, [_c('h1', [_vm._v("SS面板")]), _vm._v(" "), _c('p', [_vm._v("Life is short. The world is big.")]), _vm._v(" "), _c('router-link', {
     staticClass: "btn btn-custom btn-lg page-scroll",
     attrs: {
       "to": "login"

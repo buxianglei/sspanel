@@ -10,7 +10,7 @@
 
     <title>{{ config('app.title', 'Laravel') }}</title>
     
-    <meta name="description" content="SS面板是一家专门提供Shadowsocks账号的服务商，技术支持于Shadowsocks。Shadowsocks是新兴的一项Socks5代理技术，其相对于VPN而言，更佳快速、更加安全。SS面板精选全球各地优秀节点，深度优化各节点性能，欢迎有兴趣的同学前来试用～">
+    <meta name="description" content="SS面板是一家专门提供SS账号的服务商，技术支持于Shadowsocks。Shadowsocks是新兴的一项Socks5代理技术，其相对于VPN而言，更佳快速、更加安全。SS面板精选全球各地优秀节点，深度优化各节点性能，欢迎有兴趣的同学前来试用～">
     <meta name="keywords" content="ss,shadowsocks,ss账号,shadowsocks账号" />
     <meta name="author" content="">
 
