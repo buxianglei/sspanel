@@ -33,6 +33,8 @@ Route::any("callback", "Recharge\RechargeController@callback");
 Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function (){
     # 用户模块
     Route::group(['prefix' => 'user', 'namespace' => 'User'], function (){
+        Route::get("profile", 'ProfileController@show');
+        Route::post("profile", 'ProfileController@update');
         Route::get("order", "OrderController@getOrder");
         Route::post("buyPlan", 'OrderController@generateOrder');
     });

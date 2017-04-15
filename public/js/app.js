@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 77);
+/******/ 	return __webpack_require__(__webpack_require__.s = 76);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -21657,6 +21657,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -21679,6 +21680,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 that.url = rsp.data.data.url;
                 that.amount = rsp.data.data.user_account.amount;
                 that.plan = rsp.data.data.order[0].plan.name;
+                that.node_name = rsp.data.data.order[0].plan.node.name;
                 that.expire_time = rsp.data.data.order[0].expire_time;
                 that.used_transfer = rsp.data.data.used_transfer;
                 that.transfer = rsp.data.data.transfer;
@@ -21724,6 +21726,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             url: '',
             amount: 0,
             plan: null,
+            node_name: '无',
             html_no_plan: '',
             expire_time: '1970-01-01 00:00:00',
             used_transfer: 0,
@@ -22107,6 +22110,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -22116,6 +22123,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var rsp = axios.get("/api/v1/node/available").then(function (rsp) {
             if (rsp.data.status_code == 200) {
                 that.available_list = rsp.data.data;
+            }
+        });
+
+        var that = this;
+        axios.get("/api/v1/user/order").then(function (rsp) {
+            if (rsp.data.status_code == 200) {
+                that.showWarning();
             }
         });
     },
@@ -22128,6 +22142,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 that.plan_list = rsp.data.data;
             });
         },
+        showWarning: function showWarning() {
+            this.modal_title = '警告';
+            this.modal_body = '\
+                              <b class="text-danger">您已经开通过套餐且在有效期中，是否重复开通？</b>\
+                                 ';
+            this.$store.state.showModal = true;
+        },
+
+        close: function close() {
+            this.$store.state.showModal = false;
+        },
+
+        goBack: function goBack() {
+            this.$store.state.showModal = false;
+            this.$router.go(-1);
+        },
+
         buyPlan: function buyPlan() {
             if (this.node_id == 0) {
                 toastr.error("请选择节点");
@@ -22142,7 +22173,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var rsp = axios.post('/api/v1/user/buyPlan', {
                 plan_id: that.plan_id
             }).then(function (rsp) {
-                toastr.success("已提交申请，请稍后查看控制台");
+                if (rsp.data.status_code == 500) {
+                    toastr.error(rsp.data.data);
+                } else {
+                    toastr.success("已提交申请，请稍后查看控制台");
+                }
             });
         }
     },
@@ -22408,7 +22443,7 @@ window.Slideout = __webpack_require__(50);
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(85);
 window.Vue = __webpack_require__(11);
 
 
@@ -22425,6 +22460,7 @@ var Recharge = __webpack_require__(60);
 var Plan = __webpack_require__(59);
 var Help = __webpack_require__(54);
 var NavList = __webpack_require__(10);
+var Profile = __webpack_require__(87);
 
 var routes = [{
     path: '/',
@@ -22445,6 +22481,12 @@ var routes = [{
         path: 'recharge',
         components: {
             default: Recharge,
+            nav: NavList
+        }
+    }, {
+        path: 'profile',
+        components: {
+            default: Profile,
             nav: NavList
         }
     }, {
@@ -22521,6 +22563,12 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
             title: '帮助',
             icon: {
                 'fa-exclamation-circle': true
+            }
+        }, {
+            href: 'profile',
+            title: '设置',
+            icon: {
+                'fa-gear': true
             }
         }, {
             href: "logout",
@@ -43445,7 +43493,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "innerHTML": _vm._s(_vm.modal_body)
     },
     slot: "body"
-  })]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('p', {
+    slot: "footer"
+  }, [_c('button', {
+    staticClass: "btn btn-default btn-sm",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": _vm.goBack
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-danger  btn-sm",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": _vm.close
+    }
+  }, [_vm._v("确定")])])]), _vm._v(" "), _c('div', {
     staticClass: "box"
   }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "box-body"
@@ -43584,7 +43650,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "to": "recharge"
     }
-  }, [_vm._v("充值")])], 1), _vm._v(" "), _c('p', [_vm._v("套餐名称: "), _c('b', {
+  }, [_vm._v("充值")])], 1), _vm._v(" "), _c('p', [_vm._v("节点名称: "), _c('b', [_vm._v(" " + _vm._s(_vm.node_name))])]), _vm._v(" "), _c('p', [_vm._v("套餐名称: "), _c('b', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -46835,6 +46901,22 @@ module.exports = function(module) {
 
 /***/ }),
 /* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(13);
+module.exports = __webpack_require__(14);
+
+
+/***/ }),
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46844,7 +46926,7 @@ module.exports = function(module) {
 /* unused harmony export mapGetters */
 /* unused harmony export mapActions */
 /**
- * vuex v2.2.1
+ * vuex v2.3.0
  * (c) 2017 Evan You
  * @license MIT
  */
@@ -46945,13 +47027,11 @@ var Module = function Module (rawModule, runtime) {
   this.runtime = runtime;
   this._children = Object.create(null);
   this._rawModule = rawModule;
+  var rawState = rawModule.state;
+  this.state = (typeof rawState === 'function' ? rawState() : rawState) || {};
 };
 
-var prototypeAccessors$1 = { state: {},namespaced: {} };
-
-prototypeAccessors$1.state.get = function () {
-  return this._rawModule.state || {}
-};
+var prototypeAccessors$1 = { namespaced: {} };
 
 prototypeAccessors$1.namespaced.get = function () {
   return !!this._rawModule.namespaced
@@ -47315,7 +47395,7 @@ function installModule (store, rootState, path, module, hot) {
   var namespace = store._modules.getNamespace(path);
 
   // register in namespace map
-  if (namespace) {
+  if (module.namespaced) {
     store._modulesNamespaceMap[namespace] = module;
   }
 
@@ -47638,7 +47718,7 @@ function getModuleByNamespace (store, helper, namespace) {
 var index_esm = {
   Store: Store,
   install: install,
-  version: '2.2.1',
+  version: '2.3.0',
   mapState: mapState,
   mapMutations: mapMutations,
   mapGetters: mapGetters,
@@ -47649,12 +47729,242 @@ var index_esm = {
 
 
 /***/ }),
-/* 77 */
+/* 86 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        var that = this;
+        this.$store.state.list = this.$store.state.loginedList;
+
+        var rsp = axios.get('/api/v1/user/profile').then(function (rsp) {
+            if (rsp.data.status_code == 200) {
+                that.user_id = rsp.data.data.user_id;
+                that.user_name = rsp.data.data.user_name;
+                that.user_email = rsp.data.data.user_email;
+                that.ss_passwd = rsp.data.data.ss_passwd;
+            }
+        });
+    },
+
+    methods: {
+        update: function update() {
+            var that = this;
+
+            var rsp = axios.post('/api/v1/user/profile', {
+                name: that.user_name,
+                email: that.user_email,
+                passwd: that.ss_passwd
+            }).then(function (rsp) {
+                if (rsp.data.status_code == 200) {
+                    toastr.success(rsp.data.data);
+                } else if (rsp.data.status_code == 500) {
+                    toastr.error(rsp.data.data);
+                } else {
+                    for (var msg in rsp.data) {
+                        if (rsp.data.hasOwnProperty(msg)) {
+                            toastr.error(rsp.data[msg][0]);
+                        }
+                    }
+                }
+            });
+        }
+    },
+
+    data: function data() {
+        return {
+            user_id: null,
+            user_name: null,
+            user_email: null,
+            ss_passwd: null
+        };
+    }
+});
+
+/***/ }),
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(13);
-module.exports = __webpack_require__(14);
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(86),
+  /* template */
+  __webpack_require__(88),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/losgif/Code/sspanel/resources/assets/js/components/Profile.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Profile.vue: functional components are not supported with templates, they should use render functions.")}
 
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e39d5ae6", Component.options)
+  } else {
+    hotAPI.reload("data-v-e39d5ae6", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "profile"
+    }
+  }, [_c('div', {
+    staticClass: "box"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "box-body"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "user_id"
+    }
+  }, [_vm._v("用户ID")]), _vm._v(" "), _c('p', [_vm._v("$" + _vm._s(_vm.user_id))])]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "user_id"
+    }
+  }, [_vm._v("用户名")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.user_name),
+      expression: "user_name"
+    }],
+    staticClass: "form-control",
+    domProps: {
+      "value": (_vm.user_name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.user_name = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "user_id"
+    }
+  }, [_vm._v("邮箱")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.user_email),
+      expression: "user_email"
+    }],
+    staticClass: "form-control",
+    domProps: {
+      "value": (_vm.user_email)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.user_email = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "user_id"
+    }
+  }, [_vm._v("SS密码")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.ss_passwd),
+      expression: "ss_passwd"
+    }],
+    staticClass: "form-control",
+    domProps: {
+      "value": (_vm.ss_passwd)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.ss_passwd = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('button', {
+    staticClass: "btn btn-sm btn-success",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": _vm.update
+    }
+  }, [_vm._v("修改")])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "box-header"
+  }, [_c('i', {
+    staticClass: "fa fa-info"
+  }), _vm._v(" "), _c('h2', {
+    staticClass: "box-title"
+  }, [_vm._v("设置")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-e39d5ae6", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

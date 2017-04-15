@@ -4,8 +4,12 @@
             <h3 slot="header"> {{modal_title}} </h3>
             <p slot="body"
                v-html="modal_body"></p>
+            <p slot="footer">
+                <button type="button" class="btn btn-default btn-sm" @click="goBack">取消</button>
+                <button type="button" class="btn btn-danger  btn-sm" @click="close">确定</button>
+            </p>
         </modal>
-    
+
         <div class="box">
             <div class="box-header">
                 <i class="fa fa-cube"></i>
@@ -27,9 +31,9 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    
+
                     <button type="button" class="btn btn-success btn-sm" @click="buyPlan">购买</button>
-                    
+
                 </div>
             </div>
         </div>
@@ -46,7 +50,14 @@
                 if (rsp.data.status_code == 200) {
                     that.available_list = rsp.data.data;
                 }
-            });
+            })
+
+            var that = this;
+            axios.get("/api/v1/user/order").then(function (rsp) {
+                if (rsp.data.status_code == 200) {
+                    that.showWarning();
+                }
+            })
         },
 
         methods: {
@@ -56,6 +67,23 @@
                     that.plan_list = rsp.data.data;
                 })
             },
+            showWarning: function () {
+                this.modal_title = '警告'
+                this.modal_body = '\
+                                  <b class="text-danger">您已经开通过套餐且在有效期中，是否重复开通？</b>\
+                                     '
+                this.$store.state.showModal = true;
+            },
+
+            close: function () {
+                this.$store.state.showModal = false
+            },
+
+            goBack: function () {
+                this.$store.state.showModal = false
+                this.$router.go(-1)
+            },
+
             buyPlan: function(){
                 if (this.node_id == 0) {
                     toastr.error("请选择节点");
@@ -70,7 +98,11 @@
                 var rsp = axios.post('/api/v1/user/buyPlan', {
                     plan_id: that.plan_id
                 }).then(function(rsp){
-                    toastr.success("已提交申请，请稍后查看控制台");
+                    if (rsp.data.status_code == 500) {
+                        toastr.error(rsp.data.data)
+                    } else {
+                        toastr.success("已提交申请，请稍后查看控制台");
+                    }
                 })
             }
         },

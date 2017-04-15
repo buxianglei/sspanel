@@ -17,8 +17,8 @@
 }
 
 .appbar a
-{ 
-    color: #fff;    
+{
+    color: #fff;
 }
 
 label
@@ -111,7 +111,7 @@ p
     justify-content: center;
 }
 
-#login, #dashboard, #register, #recharge, #plan, #help
+#login, #dashboard, #register, #recharge, #plan, #help, #profile
 {
     padding: 15px;
 }
@@ -275,7 +275,7 @@ img
     background: rgba(0, 0, 0, 0.7);
 }
 
-#restaurant-menu .section-title h2 
+#restaurant-menu .section-title h2
 {
     color: #fff;
 }
@@ -285,7 +285,7 @@ img
     margin: 0 20px 80px;
 }
 
-#restaurant-menu .menu-section-title 
+#restaurant-menu .menu-section-title
 {
     font-size: 26px;
     display: block;
@@ -323,7 +323,7 @@ img
     font-size: 15px;
 }
 
-hr 
+hr
 {
     height: 2px;
     width: 70px;
@@ -464,6 +464,10 @@ body {
 
 .modal-body {
   margin: 20px 0;
+}
+
+.modal-body p, .modal-body label{
+    color: #000;
 }
 
 /*

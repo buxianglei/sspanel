@@ -14,6 +14,7 @@ const Recharge = require('./components/Recharge.vue')
 const Plan = require('./components/Plan.vue')
 const Help = require('./components/Help.vue')
 const NavList = require('./components/NavList.vue')
+const Profile = require('./components/Profile.vue')
 
 const routes = [
     {
@@ -38,6 +39,13 @@ const routes = [
                 path: 'recharge',
                 components: {
                     default: Recharge,
+                    nav: NavList
+                }
+            },
+            {
+                path: 'profile',
+                components: {
+                    default: Profile,
                     nav: NavList
                 }
             },
@@ -126,6 +134,13 @@ const store = new Vuex.Store({
             title: '帮助',
             icon: {
                 'fa-exclamation-circle': true
+            }
+        },
+        {
+            href: 'profile',
+            title: '设置',
+            icon: {
+                'fa-gear': true
             }
         },
         {

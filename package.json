@@ -21,6 +21,7 @@
   "dependencies": {
     "toastr": "^2.1.2",
     "vue-router": "^2.3.1",
-    "vue-socket.io": "^2.1.1-a"
+    "vue-socket.io": "^2.1.1-a",
+    "vuex": "^2.3.0"
   }
 }

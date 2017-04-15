@@ -5,7 +5,7 @@
             <p slot="body"
                v-html="modal_body"></p>
         </modal>
-    
+
         <div id="user-info">
             <div class="box">
                 <div class="box-header">
@@ -19,6 +19,7 @@
                         <router-link to="recharge"
                                      class="btn btn-xs btn-success">充值</router-link>
                     </p>
+                    <p>节点名称: <b> {{node_name}}</b></p>
                     <p>套餐名称: <b v-show="!plan">
                                         无
                                   <router-link to="plan"
@@ -85,7 +86,7 @@
                 </div>
             </div>
         </div>
-    
+
     </div>
 </template>
 
@@ -93,7 +94,7 @@
 export default {
     mounted() {
         var that = this
-        
+
         axios.get("/isLogin").then(function (rsp) {
             if (rsp.data.status_code == 500) {
                 that.$router.push('login');
@@ -111,6 +112,7 @@ export default {
                 that.url = rsp.data.data.url
                 that.amount = rsp.data.data.user_account.amount
                 that.plan = rsp.data.data.order[0].plan.name
+                that.node_name = rsp.data.data.order[0].plan.node.name
                 that.expire_time = rsp.data.data.order[0].expire_time
                 that.used_transfer = rsp.data.data.used_transfer
                 that.transfer = rsp.data.data.transfer
@@ -155,6 +157,7 @@ export default {
             url: '',
             amount: 0,
             plan: null,
+            node_name: '无',
             html_no_plan: '',
             expire_time: '1970-01-01 00:00:00',
             used_transfer: 0,
