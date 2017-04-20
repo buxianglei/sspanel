@@ -32,6 +32,10 @@ class OrderController extends Controller
             'userAccount'
         ])->first();
 
+        if (!empty($user->order[0]->plan->node->port)) {
+            $user->port = $user->order[0]->plan->node->port;
+        }
+
         $user->remaining_transfer = number_format(($user->transfer_enable-($user->u+$user->d))/1024/1024/1024, 2, '.', '');
         $user->transfer           = number_format($user->transfer_enable/1024/1024/1024, 2, '.', '');
         $user->used_transfer      = number_format(($user->u+$user->d)/1024/1024/1024, 2, '.', '');

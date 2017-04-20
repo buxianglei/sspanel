@@ -87,4 +87,15 @@ class LoginController extends Controller
 
         return $this->responseSuccess("success");
     }
+
+    /**
+     * 用户登录页面
+     *
+     * @param Request $request
+     * @return View
+     */
+    public function authLogin (Request $request)
+    {
+        return view('login');
+    }
 }

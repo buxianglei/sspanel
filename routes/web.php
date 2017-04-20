@@ -20,6 +20,9 @@ Route::get("isLogin", 'Dashboard\HomeController@isLogin');
 # 退出登录
 Route::post("logout", "Auth\LoginController@logout");
 
+# 登陆页面
+Route::get("login", "Auth\LoginController@authLogin")->name('login');
+
 # 登陆
 Route::post("login", 'Auth\LoginController@login');
 

@@ -19,8 +19,30 @@ require('bootstrap-sass');
 
 window.Vue = require('vue');
 
-Vue.component('modal', require('./components/Modal.vue'));
-Vue.component('nav-list', require('./components/NavList.vue'));
+Vue.component(
+    'modal', 
+    require('./components/Modal.vue')
+);
+
+Vue.component(
+    'nav-list', 
+    require('./components/NavList.vue')
+);
+
+Vue.component(
+    'passport-clients',
+    require('./components/passport/Clients.vue')
+);
+
+Vue.component(
+    'passport-authorized-clients',
+    require('./components/passport/AuthorizedClients.vue')
+);
+
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue')
+);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

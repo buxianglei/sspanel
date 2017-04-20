@@ -13,7 +13,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-    
+
     /*
     |--------------------------------------------------------------------------
     | Application Title
@@ -190,7 +190,10 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //Alipay
-        Losgif\Alipay\AopClientProvider::class
+        Losgif\Alipay\AopClientProvider::class,
+
+        //Passport
+        Laravel\Passport\PassportServiceProvider::class,
 
     ],
 

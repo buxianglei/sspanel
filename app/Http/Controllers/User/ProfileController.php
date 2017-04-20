@@ -11,14 +11,12 @@ class ProfileController extends Controller
 {
     /**
      * 个人信息转化实例
-     * @method __construct
      * @param  ProfileTransformer $profileTransformer
      */
     public $profileTransformer;
 
     /**
      * 构造方法
-     * @method __construct
      * @param  ProfileTransformer $profileTransformer 个人信息转换类
      */
     public function __construct(ProfileTransformer $profileTransformer)
@@ -28,7 +26,6 @@ class ProfileController extends Controller
 
     /**
      * 展示用户信息
-     * @method show
      * @param  Request $request 请求对象
      * @return Response         返回对象
      */
@@ -43,7 +40,6 @@ class ProfileController extends Controller
 
     /**
      * 更新用户信息
-     * @method update
      * @param  Request $request 请求对象
      * @param  User    $user    用户对象
      * @return Response         返回对象
