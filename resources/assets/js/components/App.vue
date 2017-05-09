@@ -5,7 +5,7 @@
 
         <main id="panel">
             <div class="btn btn-bar" v-on:click="openSlideout()">
-                <i class="fa fa-bars"></i> SS panel
+                <i class="fa fa-bars"></i> 阿祁加速器
                 <a href="https://cn.gravatar.com/" target="_blank" v-if="avatar"><img :src="avatar" :alt="name" class="header-img pull-right img-circle"></a>
                 <strong class="pull-right" v-if="name">{{name}} </strong>
             </div>

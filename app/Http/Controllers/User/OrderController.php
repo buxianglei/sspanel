@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Plan;
-use App\Events\GenerateOrderEvent;
+use App\Eents\GenerateOrderEvent;
 
 class OrderController extends Controller
 {

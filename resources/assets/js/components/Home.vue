@@ -3,7 +3,7 @@
         <header id="header">
             <div class="container">
                 <div class="intro-text">
-                    <h1>SS面板</h1>
+                    <h1>阿祁加速器</h1>
                     <p>Life is short. The world is big.</p>
                     <router-link to="login" class="btn btn-custom btn-lg page-scroll">开始使用</router-link>
                 </div>
